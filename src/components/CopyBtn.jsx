@@ -29,7 +29,10 @@ export default function CopyBtn({ value }) {
             className={`tooltip tooltip-bottom tooltip-${tooltip.color}`}
             data-tip={tooltip.text}
         >
-            <button className={`btn btn-xs rounded`} onClick={copycontent}>
+            <button
+                className={`btn btn-xs btn-ghost rounded`}
+                onClick={copycontent}
+            >
                 <CopyIcon />
             </button>
         </div>

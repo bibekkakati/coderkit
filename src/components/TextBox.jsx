@@ -24,6 +24,7 @@ export default function TextBox({
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}
+                spellCheck={false}
             ></textarea>
         </>
     );

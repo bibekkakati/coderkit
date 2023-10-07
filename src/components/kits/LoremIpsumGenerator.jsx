@@ -59,7 +59,7 @@ export default function LoremIpsumGenerator() {
                                 </span>
                                 <input
                                     type="number"
-                                    className="input input-xs w-[80px] rounded font-bold"
+                                    className="input input-xs w-[80px] bg-base-200 rounded font-bold"
                                     placeholder="number"
                                     value={wordsCount}
                                     onChange={onCountChange}

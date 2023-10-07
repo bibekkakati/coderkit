@@ -1,17 +1,18 @@
+import { Suspense, lazy } from "react";
 import { Link, useParams } from "react-router-dom";
 import kitslist from "../constants/kitslist.json";
-import JSONFormatter from "./kits/JSONFormatter";
-import TextCaseConverter from "./kits/TextCaseConverter";
-import Base64Transformer from "./kits/Base64Transformer";
-import LoremIpsumGenerator from "./kits/LoremIpsumGenerator";
-import JavascriptMinifier from "./kits/JavascriptMinifier";
 
 const kitcomponents = {
-    JSONFormatter: <JSONFormatter />,
-    TextCaseConverter: <TextCaseConverter />,
-    Base64Transformer: <Base64Transformer />,
-    LoremIpsumGenerator: <LoremIpsumGenerator />,
-    JavascriptMinifier: <JavascriptMinifier />,
+    JSONFormatter: lazy(() => import("./kits/JSONFormatter")),
+    TextCaseConverter: lazy(() => import("./kits/TextCaseConverter")),
+    Base64Transformer: lazy(() => import("./kits/Base64Transformer")),
+    LoremIpsumGenerator: lazy(() => import("./kits/LoremIpsumGenerator")),
+    JavascriptMinifier: lazy(() => import("./kits/JavascriptMinifier")),
+    JavascriptBeautifier: lazy(() => import("./kits/JavascriptBeautifier")),
+    CssBeautifier: lazy(() => import("./kits/CssBeautifier")),
+    CssMinifier: lazy(() => import("./kits/CssMinifier")),
+    HtmlMinifier: lazy(() => import("./kits/HtmlMinifier")),
+    HtmlBeautifier: lazy(() => import("./kits/HtmlBeautifier")),
 };
 
 export default function KitView() {
@@ -21,7 +22,12 @@ export default function KitView() {
         const { component, link } = kitslist[i];
         if (link === params.kitname && component && kitcomponents[component]) {
             // Main render - Kit
-            return kitcomponents[component];
+            const Kit = kitcomponents[component];
+            return (
+                <Suspense fallback={<></>}>
+                    <Kit />
+                </Suspense>
+            );
         }
     }
 

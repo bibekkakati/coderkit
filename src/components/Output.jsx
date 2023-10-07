@@ -1,30 +1,50 @@
 import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
-import jsonPretty from "../utils/jsonPretty";
+import hljs from "highlight.js/lib/core";
+import json from "highlight.js/lib/languages/json";
+import javascript from "highlight.js/lib/languages/javascript";
+import css from "highlight.js/lib/languages/css";
+import xml from "highlight.js/lib/languages/xml";
+
+const hljs_languages = {
+    json: json,
+    javascript: javascript,
+    css: css,
+    xml: xml,
+};
 
 export default function Output({
     label = "Output",
     value,
     error,
     actions,
-    jsonPrettyCheck = false,
+    prettify = false,
+    language,
 }) {
     const outputRef = useRef("");
 
     useEffect(() => {
-        if (outputRef.current) {
+        if (outputRef.current && prettify) {
             try {
-                if (jsonPrettyCheck) {
-                    JSON.parse(value);
-                    outputRef.current.innerHTML = jsonPretty(value) || "";
+                // Check if value is in JSON format
+                JSON.parse(value);
+                hljs.registerLanguage("json", hljs_languages.json);
+                outputRef.current.innerHTML = hljs.highlight(value, {
+                    language: "json",
+                }).value;
+            } catch (error) {
+                // Value can be Javascript, CSS, HTML etc
+                if (language) {
+                    hljs.registerLanguage(language, hljs_languages[language]);
+                    outputRef.current.innerHTML = hljs.highlight(value, {
+                        language: language,
+                    }).value;
                 } else {
                     outputRef.current.innerHTML = value || "";
                 }
-            } catch (error) {
-                outputRef.current.innerHTML = value || "";
             }
         }
-    }, [value, jsonPrettyCheck]);
+    }, [value, prettify, language]);
 
     return (
         <>
@@ -42,7 +62,7 @@ export default function Output({
                 {error ? (
                     <p className="p-1 text-error">{error}</p>
                 ) : (
-                    <code ref={outputRef}></code>
+                    <code ref={outputRef}>{!prettify ? value : ""}</code>
                 )}
             </pre>
         </>
@@ -54,5 +74,6 @@ Output.propTypes = {
     value: PropTypes.string,
     error: PropTypes.string,
     actions: PropTypes.element,
-    jsonPrettyCheck: PropTypes.bool,
+    prettify: PropTypes.bool,
+    language: PropTypes.string,
 };

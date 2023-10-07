@@ -15,9 +15,29 @@
         "component": "JavascriptMinifier"
     },
     {
+        "label": "HTML Minifier",
+        "link": "html-minifier",
+        "component": "HtmlMinifier"
+    },
+    {
+        "label": "CSS Minifier",
+        "link": "css-minifier",
+        "component": "CssMinifier"
+    },
+    {
         "label": "Javascript Beautifier",
         "link": "javascript-beautifier",
         "component": "JavascriptBeautifier"
+    },
+    {
+        "label": "HTML Beautifier",
+        "link": "html-beautifier",
+        "component": "HtmlBeautifier"
+    },
+    {
+        "label": "CSS Beautifier",
+        "link": "css-beautifier",
+        "component": "CssBeautifier"
     },
     {
         "label": "Base64 Encoder/Decoder",

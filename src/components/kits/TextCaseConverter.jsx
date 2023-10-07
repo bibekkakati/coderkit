@@ -114,7 +114,7 @@ export default function TextCaseConverter() {
                 <Output
                     value={output.value}
                     error={output.error}
-                    jsonPrettyCheck={true}
+                    prettify={true}
                     actions={
                         <>
                             <Select

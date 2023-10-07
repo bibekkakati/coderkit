@@ -1,22 +1,34 @@
 import { useEffect, useState } from "react";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
-import TextBox from "../TextBox";
-import Select from "../Select";
-import Output from "../Output";
-import CopyBtn from "../CopyBtn";
 import codeMinifier from "../../utils/codeMinifier";
-
-const modes = [{ value: "javascript", label: "Javascript" }];
+import CheckBox from "../CheckBox";
+import CopyBtn from "../CopyBtn";
+import Output from "../Output";
+import TextBox from "../TextBox";
 
 export default function JavascriptMinifier() {
-    useDocumentTitle("Code Minifier");
+    useDocumentTitle("Javascript Minifier");
 
-    const [mode, setMode] = useState(modes[0].value);
-    const [options, setOptions] = useState({
-        mangle: true,
-        keep_classnames: false,
-        keep_fnames: false,
-    });
+    const [options, setOptions] = useState([
+        {
+            label: "Mangle names",
+            key: "mangle",
+            checked: true,
+            disabled: false,
+        },
+        {
+            label: "Keep class names",
+            key: "keep_classnames",
+            checked: false,
+            disabled: false,
+        },
+        {
+            label: "Keep function names",
+            key: "keep_fnames",
+            checked: false,
+            disabled: false,
+        },
+    ]);
     const [inputV, setInputV] = useState("");
     const [output, setOutput] = useState({
         value: "",
@@ -35,7 +47,16 @@ export default function JavascriptMinifier() {
                     });
                 }
 
-                const ov = await codeMinifier.javascript(iv, options);
+                const minifyOptions = {};
+                for (let i = 0; i < options.length; i++) {
+                    const opt = options[i];
+                    minifyOptions[opt.key] = opt.checked;
+                }
+
+                const ov = await codeMinifier.minifyJavaScript(
+                    iv,
+                    minifyOptions
+                );
 
                 return setOutput({
                     value: ov,
@@ -49,10 +70,28 @@ export default function JavascriptMinifier() {
             }
         }
         processInput();
-    }, [inputV, mode]);
+    }, [inputV, options]);
 
-    const onModeChange = (e) => {
-        setMode(e.target.value);
+    const updateOptions = (e, index) => {
+        const _options = [...options];
+        _options[index].checked = e.target.checked;
+
+        const isMangleFlag = _options[index].key === "mangle";
+        const isFlagDeactived = !_options[index].checked;
+
+        // Disable and unchecked other flags if mangle is unchecked
+        if (isMangleFlag) {
+            for (let i = 0; i < _options.length; i++) {
+                const opt = _options[i];
+                if (opt.key === "mangle") {
+                    continue;
+                }
+                _options[i].disabled = isFlagDeactived;
+                _options[i].checked = false;
+            }
+        }
+
+        return setOptions(_options);
     };
 
     const onInput = (e) => {
@@ -66,24 +105,44 @@ export default function JavascriptMinifier() {
                 <TextBox
                     value={inputV}
                     onChange={onInput}
-                    placeholder="Paste your string"
-                    actions={
-                        <>
-                            <Select
-                                value={mode}
-                                onChange={onModeChange}
-                                options={modes}
-                            />
-                        </>
-                    }
+                    placeholder="Paste your code"
                 />
             </div>
             <div className="form-control p-4 h-full w-1/2">
                 <Output
                     value={output.value}
                     error={output.error}
+                    prettify={true}
+                    language="javascript"
                     actions={
                         <>
+                            <div className="dropdown dropdown-end">
+                                <select
+                                    tabIndex={0}
+                                    className="select select-xs rounded"
+                                ></select>
+                                <ul
+                                    tabIndex={0}
+                                    className="dropdown-content form-control z-[1] p-2 mt-2 shadow bg-base-200 rounded w-60"
+                                >
+                                    {options.map(
+                                        (
+                                            { key, label, checked, disabled },
+                                            index
+                                        ) => (
+                                            <CheckBox
+                                                key={key}
+                                                label={label}
+                                                onChange={(e) =>
+                                                    updateOptions(e, index)
+                                                }
+                                                checked={checked}
+                                                disabled={disabled}
+                                            />
+                                        )
+                                    )}
+                                </ul>
+                            </div>
                             <CopyBtn value={output.value} />
                         </>
                     }

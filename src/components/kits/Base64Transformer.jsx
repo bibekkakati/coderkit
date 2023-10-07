@@ -84,7 +84,7 @@ export default function Base64Transformer() {
                 <Output
                     value={output.value}
                     error={output.error}
-                    jsonPrettyCheck={true}
+                    prettify={true}
                     actions={
                         <>
                             <CopyBtn value={output.value} />

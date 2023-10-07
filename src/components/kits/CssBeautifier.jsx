@@ -1,57 +1,55 @@
 import { useEffect, useState } from "react";
-import Output from "../Output.jsx";
-import TextBox from "../TextBox.jsx";
-import CopyBtn from "../CopyBtn.jsx";
-import Select from "../Select.jsx";
-import useDocumentTitle from "../../hooks/useDocumentTitle.js";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
+import codeBeautifier from "../../utils/codeBeautifier";
+import CopyBtn from "../CopyBtn";
+import Output from "../Output";
+import Select from "../Select";
+import TextBox from "../TextBox";
 
-const sampleInput =
-    '{"kit": "JSON Formatter", "app": "Coder Kit", "version": 1, "isLive": true}';
 const indentingSpaceOptions = [
     { value: 2, label: "2 spaces" },
     { value: 3, label: "3 spaces" },
     { value: 4, label: "4 spaces" },
 ];
 
-export default function JSONFormatter() {
-    useDocumentTitle("JSON Formatter/Validator");
+export default function CssBeautifier() {
+    useDocumentTitle("CSS Beautifier");
 
     const [indentingSpace, setIndentingSpace] = useState(
         indentingSpaceOptions[0].value
     );
-    const [inputV, setInputV] = useState(sampleInput);
+    const [inputV, setInputV] = useState("");
     const [output, setOutput] = useState({
         value: "",
         error: "",
     });
 
     useEffect(() => {
-        try {
-            const iv = inputV.trim();
+        async function processInput() {
+            try {
+                const iv = inputV.trim();
 
-            if (!iv.length) {
+                if (!iv.length) {
+                    return setOutput({
+                        value: "",
+                        error: "",
+                    });
+                }
+
+                const ov = codeBeautifier.cssCode(iv, indentingSpace);
+
                 return setOutput({
-                    value: "",
+                    value: ov,
                     error: "",
                 });
+            } catch (error) {
+                return setOutput({
+                    value: "",
+                    error: error.message,
+                });
             }
-
-            const ov = JSON.parse(
-                iv
-                    .replaceAll("'", '"')
-                    .replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:([^/])/g, '"$2":$4')
-            );
-
-            return setOutput({
-                value: JSON.stringify(ov, null, indentingSpace),
-                error: "",
-            });
-        } catch (error) {
-            return setOutput({
-                value: "",
-                error: error.message,
-            });
         }
+        processInput();
     }, [inputV, indentingSpace]);
 
     const updateIndentingSpace = (e) => {
@@ -69,7 +67,7 @@ export default function JSONFormatter() {
                 <TextBox
                     value={inputV}
                     onChange={onInput}
-                    placeholder="Paste your JSON object"
+                    placeholder="Paste your code"
                 />
             </div>
             <div className="form-control p-4 h-full w-1/2">
@@ -77,6 +75,7 @@ export default function JSONFormatter() {
                     value={output.value}
                     error={output.error}
                     prettify={true}
+                    language="css"
                     actions={
                         <>
                             <Select
