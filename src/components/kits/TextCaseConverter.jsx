@@ -1,10 +1,10 @@
-import TextBox from "../TextBox";
-import Output from "../Output";
 import { useEffect, useState } from "react";
-import Select from "../Select";
-import CopyBtn from "../CopyBtn";
-import textCaseConverters from "../../utils/textCaseConverters";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import textCaseConverters from "../../utils/textCaseConverters";
+import CopyBtn from "../CopyBtn";
+import Output from "../Output";
+import Select from "../Select";
+import TextBox from "../TextBox";
 
 const sampleInput = "THE QUICK brown fox";
 const caseOptions = [

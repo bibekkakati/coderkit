@@ -1,6 +1,6 @@
+import { useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
-import { useEffect, useRef, useState } from "react";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function AppPage() {

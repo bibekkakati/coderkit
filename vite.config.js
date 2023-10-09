@@ -1,7 +1,18 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import react from "@vitejs/plugin-react";
+import { defineConfig, splitVendorChunkPlugin } from "vite";
+import viteCompression from "vite-plugin-compression";
+import { visualizer } from "rollup-plugin-visualizer";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-})
+    plugins: [
+        react(),
+        splitVendorChunkPlugin(),
+        viteCompression({ algorithm: "brotliCompress" }),
+        visualizer(),
+    ],
+    build: {
+        minify: "terser",
+        manifest: true,
+    },
+});

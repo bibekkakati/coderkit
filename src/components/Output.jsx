@@ -1,10 +1,10 @@
+import hljs from "highlight.js/lib/core";
+import css from "highlight.js/lib/languages/css";
+import javascript from "highlight.js/lib/languages/javascript";
+import json from "highlight.js/lib/languages/json";
+import xml from "highlight.js/lib/languages/xml";
 import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
-import hljs from "highlight.js/lib/core";
-import json from "highlight.js/lib/languages/json";
-import javascript from "highlight.js/lib/languages/javascript";
-import css from "highlight.js/lib/languages/css";
-import xml from "highlight.js/lib/languages/xml";
 
 const hljs_languages = {
     json: json,

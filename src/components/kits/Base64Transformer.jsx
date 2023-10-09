@@ -1,10 +1,10 @@
-import TextBox from "../TextBox";
-import Output from "../Output";
-import CopyBtn from "../CopyBtn";
-import Select from "../Select";
 import { useEffect, useState } from "react";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import transformers from "../../utils/transformers";
+import CopyBtn from "../CopyBtn";
+import Output from "../Output";
+import Select from "../Select";
+import TextBox from "../TextBox";
 
 const modes = [
     { value: 0, label: "Encode" },

@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import "./highlightjs.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./pages/home.jsx";
-import AppPage from "./pages/app.jsx";
 import KitView from "./components/KitView";
+import "./highlightjs.css";
+import "./index.css";
+import AppPage from "./pages/app.jsx";
+import HomePage from "./pages/home.jsx";
 
 const router = createBrowserRouter([
     {

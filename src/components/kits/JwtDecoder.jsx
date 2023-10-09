@@ -1,9 +1,9 @@
-import TextBox from "../TextBox";
-import Output from "../Output";
 import { useEffect, useState } from "react";
-import CopyBtn from "../CopyBtn";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import transformers from "../../utils/transformers";
+import CopyBtn from "../CopyBtn";
+import Output from "../Output";
+import TextBox from "../TextBox";
 
 export default function JwtDecoder() {
     useDocumentTitle(

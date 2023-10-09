@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Output from "../Output.jsx";
-import TextBox from "../TextBox.jsx";
-import CopyBtn from "../CopyBtn.jsx";
-import Select from "../Select.jsx";
 import useDocumentTitle from "../../hooks/useDocumentTitle.js";
+import CopyBtn from "../CopyBtn.jsx";
+import Output from "../Output.jsx";
+import Select from "../Select.jsx";
+import TextBox from "../TextBox.jsx";
 
 const sampleInput =
     '{"kit": "JSON Formatter", "app": "Coder Kit", "version": 1, "isLive": true}';

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import generateLoremIpsum from "../../utils/generateLoremIpsum";
-import Output from "../Output";
-import CopyBtn from "../CopyBtn";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import generateLoremIpsum from "../../utils/generateLoremIpsum";
+import CopyBtn from "../CopyBtn";
+import Output from "../Output";
 
 const defaultWordsCOunt = 100;
 const maxWordsCount = 10000;
