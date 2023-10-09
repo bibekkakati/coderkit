@@ -56,7 +56,10 @@ const caseOptions = [
 ];
 
 export default function TextCaseConverter() {
-    useDocumentTitle("Text Case Converter");
+    useDocumentTitle(
+        "Text Case Converter",
+        "Convert Text Case Seamlessly with Our Text Case Converter Tool. Transform Text to Upper, Lower, Sentence, and More for Enhanced Readability."
+    );
 
     const [textCase, setTextCase] = useState(caseOptions[0].value);
     const [inputV, setInputV] = useState(sampleInput);
@@ -102,7 +105,7 @@ export default function TextCaseConverter() {
     };
 
     return (
-        <div className="flex flex-row h-full w-full divide-x divide-neutral">
+        <div className="flex flex-row h-full w-full ">
             <div className="form-control p-4 h-full w-1/2">
                 <TextBox
                     value={inputV}

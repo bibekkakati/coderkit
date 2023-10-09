@@ -13,7 +13,10 @@ const indentingSpaceOptions = [
 ];
 
 export default function CssBeautifier() {
-    useDocumentTitle("CSS Beautifier");
+    useDocumentTitle(
+        "CSS Beautifier",
+        "Elevate Your Code Aesthetics with Our CSS Beautifier Tool. Enhance Readability and Consistency in Your Stylesheets for Optimal Web Development."
+    );
 
     const [indentingSpace, setIndentingSpace] = useState(
         indentingSpaceOptions[0].value
@@ -62,7 +65,7 @@ export default function CssBeautifier() {
     };
 
     return (
-        <div className="flex flex-row h-full w-full divide-x divide-neutral">
+        <div className="flex flex-row h-full w-full ">
             <div className="form-control p-4 h-full w-1/2">
                 <TextBox
                     value={inputV}

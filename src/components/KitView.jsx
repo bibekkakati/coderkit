@@ -13,14 +13,20 @@ const kitcomponents = {
     CssMinifier: lazy(() => import("./kits/CssMinifier")),
     HtmlMinifier: lazy(() => import("./kits/HtmlMinifier")),
     HtmlBeautifier: lazy(() => import("./kits/HtmlBeautifier")),
+    JwtDecoder: lazy(() => import("./kits/JwtDecoder")),
 };
 
 export default function KitView() {
     const params = useParams();
 
     for (let i = 0; i < kitslist.length; i++) {
-        const { component, link } = kitslist[i];
-        if (link === params.kitname && component && kitcomponents[component]) {
+        const { component, link, active } = kitslist[i];
+        if (
+            active &&
+            link === params.kitname &&
+            component &&
+            kitcomponents[component]
+        ) {
             // Main render - Kit
             const Kit = kitcomponents[component];
             return (

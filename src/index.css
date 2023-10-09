@@ -79,3 +79,8 @@ select:focus {
     margin: 0px !important;
     width: 0px !important;
 }
+
+a.active {
+    color: #5eb299 !important;
+    border: #5eb299 solid 1px;
+}

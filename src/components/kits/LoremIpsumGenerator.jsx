@@ -8,7 +8,10 @@ const defaultWordsCOunt = 100;
 const maxWordsCount = 10000;
 
 export default function LoremIpsumGenerator() {
-    useDocumentTitle("Lorem Ipsum Generator");
+    useDocumentTitle(
+        "Lorem Ipsum Generator",
+        "Create Realistic Placeholder Text with Our Lorem Ipsum Generator. Simplify Content Drafting and Design Prototyping for Web and Print Projects."
+    );
 
     const [wordsCount, setWordsCount] = useState(defaultWordsCOunt);
     const [output, setOutput] = useState({
@@ -46,7 +49,7 @@ export default function LoremIpsumGenerator() {
     };
 
     return (
-        <div className="flex flex-row h-full w-full divide-x divide-neutral">
+        <div className="flex flex-row h-full w-full ">
             <div className="form-control p-4 h-full w-full">
                 <Output
                     value={output.value}
@@ -59,7 +62,7 @@ export default function LoremIpsumGenerator() {
                                 </span>
                                 <input
                                     type="number"
-                                    className="input input-xs w-[80px] bg-base-200 rounded font-bold"
+                                    className="input input-xs w-[80px] bg-base-100 rounded font-bold"
                                     placeholder="number"
                                     value={wordsCount}
                                     onChange={onCountChange}

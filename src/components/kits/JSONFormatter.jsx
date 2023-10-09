@@ -14,7 +14,10 @@ const indentingSpaceOptions = [
 ];
 
 export default function JSONFormatter() {
-    useDocumentTitle("JSON Formatter/Validator");
+    useDocumentTitle(
+        "JSON Formatter/Validator",
+        "Refine Your JSON Data with Our JSON Formatter/Validator Tool. Ensure Well-Structured and Error-Free Data for Seamless Integration."
+    );
 
     const [indentingSpace, setIndentingSpace] = useState(
         indentingSpaceOptions[0].value
@@ -64,7 +67,7 @@ export default function JSONFormatter() {
     };
 
     return (
-        <div className="flex flex-row h-full w-full divide-x divide-neutral">
+        <div className="flex flex-row h-full w-full ">
             <div className="form-control p-4 h-full w-1/2">
                 <TextBox
                     value={inputV}

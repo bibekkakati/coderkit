@@ -2,56 +2,67 @@
     {
         "label": "JSON Formatter/Validator",
         "link": "json-formatter-validator",
-        "component": "JSONFormatter"
+        "component": "JSONFormatter",
+        "active": true
     },
     {
         "label": "Text Case Converter",
         "link": "text-case-converter",
-        "component": "TextCaseConverter"
+        "component": "TextCaseConverter",
+        "active": true
     },
     {
         "label": "Javascript Minifier",
         "link": "javascript-minifier",
-        "component": "JavascriptMinifier"
+        "component": "JavascriptMinifier",
+        "active": true
     },
     {
         "label": "HTML Minifier",
         "link": "html-minifier",
-        "component": "HtmlMinifier"
+        "component": "HtmlMinifier",
+        "active": true
     },
     {
         "label": "CSS Minifier",
         "link": "css-minifier",
-        "component": "CssMinifier"
+        "component": "CssMinifier",
+        "active": true
     },
     {
         "label": "Javascript Beautifier",
         "link": "javascript-beautifier",
-        "component": "JavascriptBeautifier"
+        "component": "JavascriptBeautifier",
+        "active": true
     },
     {
         "label": "HTML Beautifier",
         "link": "html-beautifier",
-        "component": "HtmlBeautifier"
+        "component": "HtmlBeautifier",
+        "active": true
     },
     {
         "label": "CSS Beautifier",
         "link": "css-beautifier",
-        "component": "CssBeautifier"
+        "component": "CssBeautifier",
+        "active": true
     },
     {
         "label": "Base64 Encoder/Decoder",
         "link": "base64-encode-decode",
-        "component": "Base64Transformer"
+        "component": "Base64Transformer",
+        "active": true
     },
     {
         "label": "JWT Decoder",
         "link": "jwt-decoder",
-        "component": "JWTDecoder"
+        "component": "JwtDecoder",
+        "active": true
     },
     {
         "label": "Lorem Ipsum Generator",
         "link": "lorem-ipsum-generator",
-        "component": "LoremIpsumGenerator"
+        "component": "LoremIpsumGenerator",
+        "active": true
     }
 ]

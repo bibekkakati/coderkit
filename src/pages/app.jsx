@@ -19,7 +19,7 @@ export default function AppPage() {
     }, []);
 
     return (
-        <div className="flex flex-row divide-x divide-neutral">
+        <div className="flex flex-row divide-x divide-ck-primary">
             <div ref={sidebarRef} className="w-fit">
                 <Sidebar />
             </div>

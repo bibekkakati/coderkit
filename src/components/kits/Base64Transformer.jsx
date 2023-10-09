@@ -4,6 +4,7 @@ import CopyBtn from "../CopyBtn";
 import Select from "../Select";
 import { useEffect, useState } from "react";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import transformers from "../../utils/transformers";
 
 const modes = [
     { value: 0, label: "Encode" },
@@ -11,7 +12,10 @@ const modes = [
 ];
 
 export default function Base64Transformer() {
-    useDocumentTitle("Base64 Encoder/Decoder");
+    useDocumentTitle(
+        "Base64 Encoder/Decoder",
+        "Effortlessly Encode and Decode Data with Our Base64 Encoder/Decoder Tool. Secure and Efficient Data Conversion for Developers."
+    );
 
     const [mode, setMode] = useState(modes[0].value);
     const [inputV, setInputV] = useState("");
@@ -33,9 +37,9 @@ export default function Base64Transformer() {
 
             let ov = "";
             if (mode == 0) {
-                ov = window.btoa(iv);
+                ov = transformers.encodeBase64(iv);
             } else {
-                ov = window.atob(iv);
+                ov = transformers.decodeBase64(iv);
             }
 
             return setOutput({
@@ -63,7 +67,7 @@ export default function Base64Transformer() {
     };
 
     return (
-        <div className="flex flex-row h-full w-full divide-x divide-neutral">
+        <div className="flex flex-row h-full w-full">
             <div className="form-control p-4 h-full w-1/2">
                 <TextBox
                     value={inputV}

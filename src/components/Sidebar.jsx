@@ -20,14 +20,16 @@ const iconcomponents = {
     HtmlBeautifier: <BeautifyIcon />,
     CssBeautifier: <BeautifyIcon />,
     Base64Transformer: <TransformIcon />,
-    JWTDecoder: <JwtIcon />,
+    JwtDecoder: <JwtIcon />,
     LoremIpsumGenerator: <LoremIcon />,
 };
 
 export default function Sidebar() {
     const params = useParams();
     const activeLink = params?.kitname;
-    const [kitItems, setKitItems] = useState(KitsList);
+    const [kitItems, setKitItems] = useState(
+        KitsList.filter((ki) => ki.active)
+    );
 
     const handleSearch = (e) => {
         const v = e.target.value || "";
@@ -46,14 +48,25 @@ export default function Sidebar() {
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-side">
-                <ul className="menu p-4 w-80 min-h-full text-base-content">
+                <ul className="menu px-4 w-80 min-h-full text-base-content">
+                    <div className="indicator">
+                        <span className="indicator-item badge badge-xs badge-warning mt-1">
+                            beta
+                        </span>
+                        <Link to={`/`}>
+                            <img
+                                src="/text-logo.png"
+                                className="h-9 w-32 mt-1"
+                            />
+                        </Link>
+                    </div>
+                    <span className="divider lg:divider-vertical"></span>
                     <input
                         type="text"
-                        placeholder="Search..."
-                        className="input input-ghost input-sm rounded"
+                        placeholder="Search here"
+                        className="input bg-base-100 input-sm rounded mb-4 mt-2"
                         onChange={debounce(handleSearch)}
                     />
-                    <div className="divider lg:divider-vertical"></div>
                     {kitItems.map(({ label, link, component }, index) => {
                         const linkClass = activeLink == link ? "active" : "";
                         return (

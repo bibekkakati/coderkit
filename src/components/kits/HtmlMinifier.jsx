@@ -6,7 +6,10 @@ import Output from "../Output";
 import TextBox from "../TextBox";
 
 export default function HtmlMinifier() {
-    useDocumentTitle("HTML Minifier");
+    useDocumentTitle(
+        "HTML Minifier",
+        "Optimize Your Website's HTML with Our HTML Minifier Tool. Reduce File Size and Boost Loading Speed for Improved Web Performance."
+    );
 
     const [inputV, setInputV] = useState("");
     const [output, setOutput] = useState({
@@ -48,7 +51,7 @@ export default function HtmlMinifier() {
     };
 
     return (
-        <div className="flex flex-row h-full w-full divide-x divide-neutral">
+        <div className="flex flex-row h-full w-full ">
             <div className="form-control p-4 h-full w-1/2">
                 <TextBox
                     value={inputV}

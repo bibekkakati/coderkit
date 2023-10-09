@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function HomePage() {
-    useDocumentTitle("Home Page");
+    useDocumentTitle(
+        "Home Page",
+        "Empower your coding journey with our all-in-one Developer Toolkit, designed to boost your productivity and streamline essential tasks"
+    );
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content text-center">
