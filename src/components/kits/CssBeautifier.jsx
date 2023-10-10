@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
-import codeBeautifier from "../../utils/codeBeautifier";
+import beautifyCss from "../../utils/beautifyCss";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
 import Select from "../Select";
@@ -39,7 +39,7 @@ export default function CssBeautifier() {
                     });
                 }
 
-                const ov = codeBeautifier.cssCode(iv, indentingSpace);
+                const ov = beautifyCss(iv, indentingSpace);
 
                 return setOutput({
                     value: ov,

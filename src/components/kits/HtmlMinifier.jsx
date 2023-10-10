@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
-import codeMinifier from "../../utils/codeMinifier";
+import minifyHtml from "../../utils/minifyHtml";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
 import TextBox from "../TextBox";
@@ -29,7 +29,7 @@ export default function HtmlMinifier() {
                     });
                 }
 
-                const ov = codeMinifier.minifyHTML(iv);
+                const ov = minifyHtml(iv);
 
                 return setOutput({
                     value: ov,

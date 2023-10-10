@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
-import codeMinifier from "../../utils/codeMinifier";
+import minifyJavascript from "../../utils/minifyJavascript";
 import CheckBox from "../CheckBox";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
@@ -56,10 +56,7 @@ export default function JavascriptMinifier() {
                     minifyOptions[opt.key] = opt.checked;
                 }
 
-                const ov = await codeMinifier.minifyJavaScript(
-                    iv,
-                    minifyOptions
-                );
+                const ov = await minifyJavascript(iv, minifyOptions);
 
                 return setOutput({
                     value: ov,

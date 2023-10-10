@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
-import transformers from "../../utils/transformers";
+import decodeJwt from "../../utils/decodeJwt";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
 import TextBox from "../TextBox";
@@ -32,7 +32,7 @@ export default function JwtDecoder() {
                 });
             }
 
-            const { header, payload } = transformers.decodeJwt(iv);
+            const { header, payload } = decodeJwt(iv);
 
             return setOutput({
                 header: JSON.stringify(header, null, 2),

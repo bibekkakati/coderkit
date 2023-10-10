@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
-import transformers from "../../utils/transformers";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
 import Select from "../Select";
@@ -37,9 +36,9 @@ export default function Base64Transformer() {
 
             let ov = "";
             if (mode == 0) {
-                ov = transformers.encodeBase64(iv);
+                ov = window.btoa(iv);
             } else {
-                ov = transformers.decodeBase64(iv);
+                ov = window.atob(iv);
             }
 
             return setOutput({
