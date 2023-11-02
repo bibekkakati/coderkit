@@ -9,11 +9,11 @@ export default function HomePage() {
 
     return (
         <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col lg:flex-row">
+            <div className="hero-content flex-col lg:flex-row w-1/2">
                 <img
-                    src="/logo-icon.png"
+                    src="/android-chrome-192x192.png"
                     className="max-w-sm rounded-lg shadow-2xl"
-                    loading="lazy"
+                    loading="eager"
                 />
                 <div>
                     <h1 className="text-5xl font-bold">Hello, Coders!</h1>
@@ -23,7 +23,7 @@ export default function HomePage() {
                         streamline essential tasks. 🚀
                     </p>
                     <Link to="/app" aria-label="CoderKit App">
-                        <button className="btn btn-primary">Get Started</button>
+                        <button className="btn btn-outline">Get Started</button>
                     </Link>
                 </div>
             </div>

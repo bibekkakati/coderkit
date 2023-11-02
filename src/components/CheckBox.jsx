@@ -1,11 +1,6 @@
 import PropTypes from "prop-types";
 
-export default function CheckBox({
-    label,
-    checked = false,
-    onChange,
-    disabled = false,
-}) {
+const CheckBox = ({ label, checked = false, onChange, disabled = false }) => {
     return (
         <label className="label">
             <span className="label-text">{label}</span>
@@ -18,7 +13,7 @@ export default function CheckBox({
             />
         </label>
     );
-}
+};
 
 CheckBox.propTypes = {
     label: PropTypes.string,
@@ -26,3 +21,5 @@ CheckBox.propTypes = {
     onChange: PropTypes.func,
     disabled: PropTypes.bool,
 };
+
+export default CheckBox;

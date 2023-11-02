@@ -1,24 +1,39 @@
-import React from "react";
+/* eslint-disable react-refresh/only-export-components */
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import KitView from "./components/KitView";
+import ScreenLoader from "./components/ScreenLoader";
 import "./highlightjs.css";
 import "./index.css";
-import AppPage from "./pages/app.jsx";
-import HomePage from "./pages/home.jsx";
+
+const HomePage = lazy(() => import("./pages/home"));
+const AppPage = lazy(() => import("./pages/app"));
+const KitView = lazy(() => import("./components/KitView"));
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <HomePage />,
+        element: (
+            <Suspense fallback={<ScreenLoader />}>
+                <HomePage />
+            </Suspense>
+        ),
     },
     {
         path: "/app",
-        element: <AppPage />,
+        element: (
+            <Suspense fallback={<ScreenLoader />}>
+                <AppPage />
+            </Suspense>
+        ),
         children: [
             {
                 path: "/app/:kitname",
-                element: <KitView />,
+                element: (
+                    <Suspense fallback={<ScreenLoader />}>
+                        <KitView />
+                    </Suspense>
+                ),
             },
         ],
     },

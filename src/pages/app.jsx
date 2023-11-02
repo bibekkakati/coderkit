@@ -1,9 +1,7 @@
-import { Suspense, lazy, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
-import Loader from "../components/Loader";
+import Sidebar from "../components/Sidebar";
 import useDocumentTitle from "../hooks/useDocumentTitle";
-
-const Sidebar = lazy(() => import("../components/Sidebar"));
 
 export default function AppPage() {
     useDocumentTitle("Kit View");
@@ -23,15 +21,13 @@ export default function AppPage() {
     return (
         <div className="flex flex-row divide-x divide-ck-primary">
             <div ref={sidebarRef} className="w-fit">
-                <Suspense fallback={<Loader />}>
-                    <Sidebar />
-                </Suspense>
+                <Sidebar />
             </div>
-            {outletWidth && (
+            {outletWidth ? (
                 <div className="h-screen" style={{ width: outletWidth + "%" }}>
                     <Outlet />
                 </div>
-            )}
+            ) : null}
         </div>
     );
 }

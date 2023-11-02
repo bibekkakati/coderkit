@@ -1,7 +1,7 @@
 import { Suspense, lazy } from "react";
 import { Link, useParams } from "react-router-dom";
 import kitslist from "../constants/kitslist.json";
-import Loader from "./Loader";
+import ScreenLoader from "./ScreenLoader";
 
 const kitcomponents = {
     JSONFormatter: lazy(() => import("./kits/JSONFormatter")),
@@ -31,7 +31,7 @@ export default function KitView() {
             // Main render - Kit
             const Kit = kitcomponents[component];
             return (
-                <Suspense fallback={<Loader />}>
+                <Suspense fallback={<ScreenLoader />}>
                     <Kit />
                 </Suspense>
             );
