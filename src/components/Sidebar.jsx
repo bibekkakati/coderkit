@@ -7,6 +7,7 @@ import LoremIcon from "../assets/LoremIcon";
 import MinifyIcon from "../assets/MinifyIcon";
 import TextCaseIcon from "../assets/TextCaseIcon";
 import TransformIcon from "../assets/TransformIcon";
+import Config from "../constants/config.json";
 import KitsList from "../constants/kitslist.json";
 import debounce from "../utils/debounce";
 
@@ -23,6 +24,8 @@ const iconcomponents = {
     JwtDecoder: <JwtIcon />,
     LoremIpsumGenerator: <LoremIcon />,
 };
+
+const FeedbackURL = Config.feedback_url;
 
 export default function Sidebar() {
     const params = useParams();
@@ -53,10 +56,12 @@ export default function Sidebar() {
                         <span className="indicator-item badge badge-xs badge-warning mt-1">
                             beta
                         </span>
-                        <Link to={`/`}>
+                        <Link to="/" aria-label="CoderKit App">
                             <img
                                 src="/text-logo.png"
                                 className="h-9 w-32 mt-1"
+                                alt="CoderKit"
+                                loading="lazy"
                             />
                         </Link>
                     </div>
@@ -71,7 +76,11 @@ export default function Sidebar() {
                         const linkClass = activeLink == link ? "active" : "";
                         return (
                             <li key={index}>
-                                <Link to={`/app/${link}`} className={linkClass}>
+                                <Link
+                                    to={`/app/${link}`}
+                                    aria-label={label}
+                                    className={linkClass}
+                                >
                                     {iconcomponents[component]}
                                     {label}
                                 </Link>
@@ -80,6 +89,17 @@ export default function Sidebar() {
                     })}
                 </ul>
             </div>
+            {FeedbackURL && (
+                <button className="btn btn-xs btn-primary rounded fixed pb-1 bottom-[-3px] left-10">
+                    <Link
+                        to={FeedbackURL}
+                        target="__blank"
+                        aria-label="Feedback URL"
+                    >
+                        Feedback
+                    </Link>
+                </button>
+            )}
         </div>
     );
 }

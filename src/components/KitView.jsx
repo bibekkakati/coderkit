@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { Link, useParams } from "react-router-dom";
 import kitslist from "../constants/kitslist.json";
+import Loader from "./Loader";
 
 const kitcomponents = {
     JSONFormatter: lazy(() => import("./kits/JSONFormatter")),
@@ -30,7 +31,7 @@ export default function KitView() {
             // Main render - Kit
             const Kit = kitcomponents[component];
             return (
-                <Suspense fallback={<></>}>
+                <Suspense fallback={<Loader />}>
                     <Kit />
                 </Suspense>
             );
@@ -46,9 +47,10 @@ export default function KitView() {
                         Oh no! Seems like our intern is cooking something here
                         &nbsp;🍳
                     </p>
-                    <button className="btn btn-primary btn-sm">
-                        <Link to="/app">Home</Link>
-                    </button>
+
+                    <Link to="/app" aria-label="CoderKit App">
+                        <button className="btn btn-primary btn-sm">Home</button>
+                    </Link>
                 </div>
             </div>
         </div>
