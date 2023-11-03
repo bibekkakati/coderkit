@@ -3,7 +3,7 @@ import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function HomePage() {
     useDocumentTitle(
-        "Home Page",
+        "Developer's Companion",
         "Empower your coding journey with our all-in-one Developer Toolkit, designed to boost your productivity and streamline essential tasks"
     );
 
@@ -23,7 +23,7 @@ export default function HomePage() {
                         streamline essential tasks. 🚀
                     </p>
                     <Link to="/app" aria-label="CoderKit App">
-                        <button className="btn btn-outline">Get Started</button>
+                        <button className="btn btn-outline">View Tools</button>
                     </Link>
                 </div>
             </div>

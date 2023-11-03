@@ -41,7 +41,12 @@ export default function KitView() {
     // Error block
     return (
         <div className="hero min-h-screen">
-            <div className="hero-content text-center">
+            <div className="hero-content flex-col text-center">
+                <img
+                    src="/error-illustration.png"
+                    className="h-[200px] w-[200px]"
+                    alt="Error Illustration"
+                />
                 <div className="max-w-lg">
                     <p className="py-6 text-l">
                         Oh no! Seems like our intern is cooking something here

@@ -9,6 +9,7 @@ import "./index.css";
 const HomePage = lazy(() => import("./pages/home"));
 const AppPage = lazy(() => import("./pages/app"));
 const KitView = lazy(() => import("./components/KitView"));
+const ErrorPage = lazy(() => import("./components/Error"));
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
                 <HomePage />
             </Suspense>
         ),
+        errorElement: <ErrorPage />,
     },
     {
         path: "/app",
