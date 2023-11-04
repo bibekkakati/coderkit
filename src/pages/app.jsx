@@ -1,11 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
-import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function AppPage() {
-    useDocumentTitle("Kit View");
-
     const sidebarRef = useRef("");
     const [screenSize, setScreenSize] = useState({
         width: window.innerWidth,
@@ -38,7 +35,7 @@ export default function AppPage() {
         };
     }, []);
 
-    if (screenSize.width < 1024) {
+    if (screenSize.width < 768) {
         return (
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col text-center">
@@ -47,11 +44,27 @@ export default function AppPage() {
                         className="h-[200px] w-[200px]"
                         alt="Screen Size"
                     />
-                    <div>
-                        <p className="py-6">
-                            Oops! We are not supporting smaller screen sizes.
-                            Please use a bigger screen.
-                        </p>
+                    <p className="py-6">
+                        Oops! We are not supporting smaller screen sizes. Please
+                        use a bigger screen.
+                    </p>
+                    <div className="flex flex-row gap-4">
+                        <Link to="/" aria-label="Home">
+                            <button
+                                type="button"
+                                className="btn btn-outline btn-sm rounded"
+                            >
+                                Home
+                            </button>
+                        </Link>
+                        <Link to="/#tools" aria-label="Meet the tools">
+                            <button
+                                type="button"
+                                className="btn btn-outline btn-sm rounded"
+                            >
+                                Meet the tools
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

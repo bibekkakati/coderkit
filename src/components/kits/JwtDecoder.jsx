@@ -1,16 +1,10 @@
 import { useEffect, useState } from "react";
-import useDocumentTitle from "../../hooks/useDocumentTitle";
 import decodeJwt from "../../utils/decodeJwt";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
 import TextBox from "../TextBox";
 
 export default function JwtDecoder() {
-    useDocumentTitle(
-        "JWT Decoder",
-        "Decode JWT Tokens with Our JWT Decoder Tool"
-    );
-
     const [inputV, setInputV] = useState(
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
     );
@@ -68,7 +62,6 @@ export default function JwtDecoder() {
                     value={output.header}
                     error={output.error}
                     prettify={true}
-                    language="json"
                     actions={
                         <>
                             <CopyBtn value={output.header} />
@@ -80,7 +73,6 @@ export default function JwtDecoder() {
                     value={output.payload}
                     error={output.error}
                     prettify={true}
-                    language="json"
                     actions={
                         <>
                             <CopyBtn value={output.payload} />

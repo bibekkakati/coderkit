@@ -48,21 +48,25 @@ export default function Sidebar() {
     };
 
     return (
-        <div className="drawer lg:drawer-open">
+        <div className="drawer lg:drawer-open md:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-side">
                 <ul className="menu px-4 w-80 min-h-full text-base-content">
-                    <div className="indicator">
-                        <span className="indicator-item badge badge-xs badge-warning mt-1">
+                    <div className="w-fit indicator ml-3">
+                        <span className="indicator-item indicator-middle badge badge-xs badge-neutral rounded font-bold mr-[-24px]">
                             beta
                         </span>
-                        <Link to="/" aria-label="CoderKit App">
-                            <img
-                                src="/text-logo.png"
-                                className="h-9 w-32 mt-1"
-                                alt="CoderKit"
-                                loading="lazy"
-                            />
+                        <Link to="/" aria-label="Home">
+                            <div className="inline-flex items-center">
+                                <img
+                                    src="/android-chrome-192x192.png"
+                                    className="h-[36px] w-[36px]"
+                                    alt="CoderKit"
+                                />
+                                <span className="ml-2 text-lg font-bold">
+                                    CoderKit
+                                </span>
+                            </div>
                         </Link>
                     </div>
                     <span className="divider lg:divider-vertical"></span>
@@ -94,7 +98,7 @@ export default function Sidebar() {
                     <Link
                         to={FeedbackURL}
                         target="__blank"
-                        aria-label="Feedback URL"
+                        aria-label="Feedback"
                     >
                         Feedback
                     </Link>

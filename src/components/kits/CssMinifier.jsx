@@ -1,16 +1,10 @@
 import { useEffect, useState } from "react";
-import useDocumentTitle from "../../hooks/useDocumentTitle";
 import minifyCSS from "../../utils/minifyCss";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
 import TextBox from "../TextBox";
 
 export default function CssMinifier() {
-    useDocumentTitle(
-        "CSS Minifier",
-        "Streamline Your Stylesheets with Our CSS Minifier Tool. Boost Website Performance by Reducing File Size and Load Times."
-    );
-
     const [inputV, setInputV] = useState("");
     const [output, setOutput] = useState({
         value: "",
@@ -65,6 +59,7 @@ export default function CssMinifier() {
                     error={output.error}
                     prettify={true}
                     language="css"
+                    wrap={true}
                     actions={
                         <>
                             <CopyBtn value={output.value} />

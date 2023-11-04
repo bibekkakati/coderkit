@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import useDocumentTitle from "../../hooks/useDocumentTitle";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
 import Select from "../Select";
@@ -11,11 +10,6 @@ const modes = [
 ];
 
 export default function Base64Transformer() {
-    useDocumentTitle(
-        "Base64 Encoder/Decoder",
-        "Effortlessly Encode and Decode Data with Our Base64 Encoder/Decoder Tool. Secure and Efficient Data Conversion for Developers."
-    );
-
     const [mode, setMode] = useState(modes[0].value);
     const [inputV, setInputV] = useState("");
     const [output, setOutput] = useState({
@@ -88,6 +82,7 @@ export default function Base64Transformer() {
                     value={output.value}
                     error={output.error}
                     prettify={true}
+                    wrap={true}
                     actions={
                         <>
                             <CopyBtn value={output.value} />

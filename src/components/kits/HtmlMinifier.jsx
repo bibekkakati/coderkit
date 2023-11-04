@@ -1,16 +1,10 @@
 import { useEffect, useState } from "react";
-import useDocumentTitle from "../../hooks/useDocumentTitle";
 import minifyHtml from "../../utils/minifyHtml";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
 import TextBox from "../TextBox";
 
 export default function HtmlMinifier() {
-    useDocumentTitle(
-        "HTML Minifier",
-        "Optimize Your Website's HTML with Our HTML Minifier Tool. Reduce File Size and Boost Loading Speed for Improved Web Performance."
-    );
-
     const [inputV, setInputV] = useState("");
     const [output, setOutput] = useState({
         value: "",
@@ -65,6 +59,7 @@ export default function HtmlMinifier() {
                     error={output.error}
                     prettify={true}
                     language="xml"
+                    wrap={true}
                     actions={
                         <>
                             <CopyBtn value={output.value} />

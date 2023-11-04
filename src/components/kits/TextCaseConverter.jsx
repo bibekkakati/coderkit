@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import useDocumentTitle from "../../hooks/useDocumentTitle";
 import textCaseConverters from "../../utils/textCaseConverters";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
@@ -56,11 +55,6 @@ const caseOptions = [
 ];
 
 export default function TextCaseConverter() {
-    useDocumentTitle(
-        "Text Case Converter",
-        "Convert Text Case Seamlessly with Our Text Case Converter Tool. Transform Text to Upper, Lower, Sentence, and More for Enhanced Readability."
-    );
-
     const [textCase, setTextCase] = useState(caseOptions[0].value);
     const [inputV, setInputV] = useState(sampleInput);
     const [output, setOutput] = useState({
@@ -118,6 +112,7 @@ export default function TextCaseConverter() {
                     value={output.value}
                     error={output.error}
                     prettify={true}
+                    wrap={true}
                     actions={
                         <>
                             <Select

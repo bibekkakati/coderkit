@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import useDocumentTitle from "../../hooks/useDocumentTitle";
 import minifyJavascript from "../../utils/minifyJavascript";
 import CheckBox from "../CheckBox";
 import CopyBtn from "../CopyBtn";
@@ -7,11 +6,6 @@ import Output from "../Output";
 import TextBox from "../TextBox";
 
 export default function JavascriptMinifier() {
-    useDocumentTitle(
-        "Javascript Minifier",
-        "Boost Website Performance with Our JavaScript Minifier Tool. Optimize Code for Faster Loading and Improved User Experience."
-    );
-
     const [options, setOptions] = useState([
         {
             label: "Mangle names",
@@ -114,6 +108,7 @@ export default function JavascriptMinifier() {
                     error={output.error}
                     prettify={true}
                     language="javascript"
+                    wrap={true}
                     actions={
                         <>
                             <div className="dropdown dropdown-end">

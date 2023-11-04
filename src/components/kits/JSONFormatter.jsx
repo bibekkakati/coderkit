@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import useDocumentTitle from "../../hooks/useDocumentTitle.js";
 import CopyBtn from "../CopyBtn.jsx";
 import Output from "../Output.jsx";
 import Select from "../Select.jsx";
@@ -14,11 +13,6 @@ const indentingSpaceOptions = [
 ];
 
 export default function JSONFormatter() {
-    useDocumentTitle(
-        "JSON Formatter/Validator",
-        "Refine Your JSON Data with Our JSON Formatter/Validator Tool. Ensure Well-Structured and Error-Free Data for Seamless Integration."
-    );
-
     const [indentingSpace, setIndentingSpace] = useState(
         indentingSpaceOptions[0].value
     );
@@ -30,7 +24,7 @@ export default function JSONFormatter() {
 
     useEffect(() => {
         try {
-            const iv = inputV.trim();
+            const iv = inputV.trim(); //?.replaceAll("'", '"');
 
             if (!iv.length) {
                 return setOutput({
@@ -39,11 +33,18 @@ export default function JSONFormatter() {
                 });
             }
 
-            const ov = JSON.parse(
-                iv
-                    .replaceAll("'", '"')
-                    .replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:([^/])/g, '"$2":$4')
-            );
+            let ov = null;
+
+            try {
+                ov = JSON.parse(iv);
+            } catch (error) {
+                ov = JSON.parse(
+                    iv.replace(
+                        /(['"])?([a-zA-Z0-9_]+)(['"])?:([^/])/g,
+                        '"$2":$4'
+                    )
+                );
+            }
 
             return setOutput({
                 value: JSON.stringify(ov, null, indentingSpace),

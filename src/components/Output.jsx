@@ -4,7 +4,7 @@ import javascript from "highlight.js/lib/languages/javascript";
 import json from "highlight.js/lib/languages/json";
 import xml from "highlight.js/lib/languages/xml";
 import PropTypes from "prop-types";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const hljs_languages = {
     json: json,
@@ -20,11 +20,13 @@ export default function Output({
     actions,
     prettify = false,
     language,
+    wrap = false,
 }) {
     const outputRef = useRef("");
+    const [wrapState, setWrapState] = useState(wrap);
 
     useEffect(() => {
-        if (outputRef.current && prettify) {
+        if (outputRef.current && prettify && value) {
             try {
                 // Check if value is in JSON format
                 JSON.parse(value);
@@ -32,6 +34,12 @@ export default function Output({
                 outputRef.current.innerHTML = hljs.highlight(value, {
                     language: "json",
                 }).value;
+
+                // FORCE: disable wrap for JSON
+                // HTML minifier can minify the JSON, so language check is required
+                if (!language || language === "json") {
+                    setWrapState(false);
+                }
             } catch (error) {
                 // Value can be Javascript, CSS, HTML etc
                 if (language) {
@@ -42,9 +50,10 @@ export default function Output({
                 } else {
                     outputRef.current.innerHTML = value || "";
                 }
+                setWrapState(wrap);
             }
         }
-    }, [value, prettify, language]);
+    }, [value, prettify, language, wrap]);
 
     return (
         <>
@@ -58,7 +67,11 @@ export default function Output({
                     {actions}
                 </div>
             </div>
-            <pre className="flex-1 textarea rounded h-full">
+            <pre
+                className={`flex-1 textarea rounded h-full ${
+                    wrapState ? "whitespace-pre-wrap" : ""
+                }`}
+            >
                 {error ? (
                     <p className="p-1 text-error">{error}</p>
                 ) : (
@@ -76,4 +89,5 @@ Output.propTypes = {
     actions: PropTypes.element,
     prettify: PropTypes.bool,
     language: PropTypes.string,
+    wrap: PropTypes.bool,
 };

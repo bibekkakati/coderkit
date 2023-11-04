@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import useDocumentTitle from "../../hooks/useDocumentTitle";
 import beautifyCss from "../../utils/beautifyCss";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
@@ -13,11 +12,6 @@ const indentingSpaceOptions = [
 ];
 
 export default function CssBeautifier() {
-    useDocumentTitle(
-        "CSS Beautifier",
-        "Elevate Your Code Aesthetics with Our CSS Beautifier Tool. Enhance Readability and Consistency in Your Stylesheets for Optimal Web Development."
-    );
-
     const [indentingSpace, setIndentingSpace] = useState(
         indentingSpaceOptions[0].value
     );

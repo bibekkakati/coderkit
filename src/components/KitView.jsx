@@ -1,7 +1,8 @@
 import { Suspense, lazy } from "react";
-import { Link, useParams } from "react-router-dom";
-import kitslist from "../constants/kitslist.json";
+import { useParams } from "react-router-dom";
+import KitsList from "../constants/kitslist.json";
 import ScreenLoader from "./ScreenLoader";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const kitcomponents = {
     JSONFormatter: lazy(() => import("./kits/JSONFormatter")),
@@ -20,14 +21,17 @@ const kitcomponents = {
 export default function KitView() {
     const params = useParams();
 
-    for (let i = 0; i < kitslist.length; i++) {
-        const { component, link, active } = kitslist[i];
+    for (let i = 0; i < KitsList.length; i++) {
+        const { label, meta_desc, short_desc, component, link, active } =
+            KitsList[i];
         if (
             active &&
             link === params.kitname &&
             component &&
             kitcomponents[component]
         ) {
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            useDocumentTitle(`${label} | ${short_desc}`, meta_desc);
             // Main render - Kit
             const Kit = kitcomponents[component];
             return (
@@ -52,10 +56,6 @@ export default function KitView() {
                         Oh no! Seems like our intern is cooking something here
                         &nbsp;🍳
                     </p>
-
-                    <Link to="/app" aria-label="CoderKit App">
-                        <button className="btn btn-primary btn-sm">Home</button>
-                    </Link>
                 </div>
             </div>
         </div>

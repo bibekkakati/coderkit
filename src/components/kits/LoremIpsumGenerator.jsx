@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import useDocumentTitle from "../../hooks/useDocumentTitle";
 import generateLoremIpsum from "../../utils/generateLoremIpsum";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
@@ -8,11 +7,6 @@ const defaultWordsCOunt = 100;
 const maxWordsCount = 10000;
 
 export default function LoremIpsumGenerator() {
-    useDocumentTitle(
-        "Lorem Ipsum Generator",
-        "Create Realistic Placeholder Text with Our Lorem Ipsum Generator. Simplify Content Drafting and Design Prototyping for Web and Print Projects."
-    );
-
     const [wordsCount, setWordsCount] = useState(defaultWordsCOunt);
     const [output, setOutput] = useState({
         value: "",
@@ -54,6 +48,7 @@ export default function LoremIpsumGenerator() {
                 <Output
                     value={output.value}
                     error={output.error}
+                    wrap={true}
                     actions={
                         <>
                             <span className="label flex flex-row gap-2">
