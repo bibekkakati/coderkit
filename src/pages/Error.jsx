@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 
-export default function Error() {
+export default function ErrorPage() {
     useDocumentTitle("404 | Page not found");
 
     return (

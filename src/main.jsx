@@ -1,14 +1,17 @@
-import React, { lazy, Suspense } from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ScreenLoader from "./components/ScreenLoader";
 import "./highlightjs.css";
 import "./index.css";
-
-const HomePage = lazy(() => import("./pages/home"));
-const AppPage = lazy(() => import("./pages/app"));
-const KitView = lazy(() => import("./components/KitView"));
-const ErrorPage = lazy(() => import("./components/Error"));
+import {
+    AppPage,
+    ErrorPage,
+    FeedbackPage,
+    HomePage,
+    PrivacyPolicyPage,
+    TermsOfServicePage,
+} from "./pages";
 
 const router = createBrowserRouter([
     {
@@ -21,22 +24,44 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
     },
     {
-        path: "/app",
+        path: "/app/:kitname?",
         element: (
             <Suspense fallback={<ScreenLoader />}>
                 <AppPage />
             </Suspense>
         ),
-        children: [
-            {
-                path: "/app/:kitname",
-                element: (
-                    <Suspense fallback={<ScreenLoader />}>
-                        <KitView />
-                    </Suspense>
-                ),
-            },
-        ],
+    },
+    {
+        path: "/feedback",
+        element: (
+            <Suspense fallback={<ScreenLoader />}>
+                <FeedbackPage />
+            </Suspense>
+        ),
+    },
+    {
+        path: "/terms-of-service",
+        element: (
+            <Suspense fallback={<ScreenLoader />}>
+                <TermsOfServicePage />
+            </Suspense>
+        ),
+    },
+    {
+        path: "/privacy-policy",
+        element: (
+            <Suspense fallback={<ScreenLoader />}>
+                <PrivacyPolicyPage />
+            </Suspense>
+        ),
+    },
+    {
+        path: "/error",
+        element: (
+            <Suspense fallback={<ScreenLoader />}>
+                <ErrorPage />
+            </Suspense>
+        ),
     },
 ]);
 

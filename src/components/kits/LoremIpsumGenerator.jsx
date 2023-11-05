@@ -43,7 +43,7 @@ export default function LoremIpsumGenerator() {
     };
 
     return (
-        <div className="flex flex-row h-full w-full ">
+        <div className="flex flex-col md:flex-row h-full w-full ">
             <div className="form-control p-4 h-full w-full">
                 <Output
                     value={output.value}

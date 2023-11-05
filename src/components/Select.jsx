@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
-const Select = ({ onChange, value, options }) => {
+export default function Select({ onChange, value, options }) {
     return (
         <select
-            className="select select-xs btn-bordered rounded"
+            className="select select-xs rounded"
             onChange={onChange}
             value={value}
         >
@@ -14,7 +14,7 @@ const Select = ({ onChange, value, options }) => {
             ))}
         </select>
     );
-};
+}
 
 Select.propTypes = {
     onChange: PropTypes.func,
@@ -26,5 +26,3 @@ Select.propTypes = {
         })
     ),
 };
-
-export default Select;

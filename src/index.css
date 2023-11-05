@@ -63,6 +63,11 @@ input:focus {
     outline: none !important;
 }
 
+input::placeholder,
+textarea::placeholder {
+    font-size: 12px;
+}
+
 select:focus {
     outline: none !important;
 }

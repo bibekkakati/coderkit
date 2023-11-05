@@ -192,7 +192,7 @@ const Footer = () => (
     <div className="col-span-12 max-w-7xl overflow-hidden py-8">
         <div className="mx-auto">
             <div className="flex flex-wrap items-center justify-between">
-                <div className="w-auto p-8">
+                <div className="w-auto py-8">
                     <Link to="/" aria-label="Home">
                         <div className="inline-flex items-center">
                             <img
@@ -206,12 +206,12 @@ const Footer = () => (
                         </div>
                     </Link>
                 </div>
-                <div className="w-auto p-8">
+                <div className="w-auto py-8">
                     <ul className="-m-5 flex flex-wrap items-center">
                         <li className="p-5">
                             <Link
                                 className="font-medium text-gray-600 hover:text-gray-700"
-                                to="#"
+                                to="/privacy-policy"
                                 aria-label="Privacy Policy"
                             >
                                 Privacy Policy
@@ -220,19 +220,10 @@ const Footer = () => (
                         <li className="p-5">
                             <Link
                                 className="font-medium text-gray-600 hover:text-gray-700"
-                                to="#"
+                                to="/terms-of-service"
                                 aria-label="Terms of Service"
                             >
                                 Terms of Service
-                            </Link>
-                        </li>
-                        <li className="p-5">
-                            <Link
-                                className="font-medium text-gray-600 hover:text-gray-700"
-                                to="#"
-                                aria-label="Return Policy"
-                            >
-                                Return Policy
                             </Link>
                         </li>
                         <li className="p-5">
@@ -242,15 +233,6 @@ const Footer = () => (
                                 aria-label="Feedback"
                             >
                                 Feedback
-                            </Link>
-                        </li>
-                        <li className="p-5">
-                            <Link
-                                className="font-medium text-gray-600 hover:text-gray-700"
-                                to="#"
-                                aria-label="Contact Us"
-                            >
-                                Contact Us
                             </Link>
                         </li>
                     </ul>

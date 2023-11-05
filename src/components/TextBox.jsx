@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 
-const TextBox = ({
+export default function TextBox({
     label = "Input",
     value,
     onChange,
     placeholder,
     actions,
-}) => {
+}) {
     return (
         <>
             <div className="flex flex-row justify-between">
@@ -28,7 +28,7 @@ const TextBox = ({
             ></textarea>
         </>
     );
-};
+}
 
 TextBox.propTypes = {
     label: PropTypes.string,
@@ -37,5 +37,3 @@ TextBox.propTypes = {
     onChange: PropTypes.func,
     actions: PropTypes.element,
 };
-
-export default TextBox;

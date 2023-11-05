@@ -60,8 +60,8 @@ export default function Base64Transformer() {
     };
 
     return (
-        <div className="flex flex-row h-full w-full">
-            <div className="form-control p-4 h-full w-1/2">
+        <div className="flex flex-col md:flex-row h-full w-full">
+            <div className="form-control p-4 h-1/2 w-full md:h-full md:w-1/2">
                 <TextBox
                     value={inputV}
                     onChange={onInput}
@@ -77,7 +77,7 @@ export default function Base64Transformer() {
                     }
                 />
             </div>
-            <div className="form-control p-4 h-full w-1/2">
+            <div className="form-control p-4 h-1/2 w-full md:h-full md:w-1/2">
                 <Output
                     value={output.value}
                     error={output.error}

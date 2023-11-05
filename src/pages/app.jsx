@@ -1,23 +1,57 @@
-import { useEffect, useRef, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
+import PropTypes from "prop-types";
+import { lazy, useEffect, useRef, useState } from "react";
+import { Navigate, useParams } from "react-router-dom";
+import Topbar from "../components/Topbar";
+import KitsList from "../constants/kitslist.json";
+
+const KitView = lazy(() => import("../components/KitView"));
+const Sidebar = lazy(() => import("../components/Sidebar"));
+const ErrorPage = lazy(() => import("./Error"));
 
 export default function AppPage() {
-    const sidebarRef = useRef("");
+    const params = useParams();
+    const kitname = params.kitname;
+
+    if (!kitname) {
+        const { link } = KitsList[0];
+        return <Navigate to={`/app/${link}`} replace={true} />;
+    }
+
+    const isValidKitName = KitsList.find(
+        (kit) => kit.link === kitname && kit.active
+    );
+    if (!isValidKitName) {
+        return <ErrorPage />;
+    }
+
+    return <AppView kitname={kitname} />;
+}
+
+const AppView = ({ kitname }) => {
+    const navref = useRef(null);
     const [screenSize, setScreenSize] = useState({
         width: window.innerWidth,
         height: window.innerHeight,
     });
-    const [outletWidth, setOutletWidth] = useState(0);
+    const [outletSize, setOutletSize] = useState({
+        width: 0,
+        height: 0,
+    });
 
     useEffect(() => {
-        if (sidebarRef.current) {
-            const consumedWidth = sidebarRef.current.clientWidth;
+        if (navref.current) {
+            const consumedWidth = navref.current.clientWidth;
+            const consumedHeight = navref.current.clientHeight;
             const bodyWidth = screenSize.width;
-            // Set remaining width percentage
-            setOutletWidth(100 - (consumedWidth / bodyWidth) * 100);
+            const bodyHeight = screenSize.height;
+
+            // Set remaining dimension percentage
+            setOutletSize({
+                width: 100 - (consumedWidth / bodyWidth) * 100,
+                height: 100 - (consumedHeight / bodyHeight) * 100,
+            });
         }
-    }, [screenSize.width]);
+    }, [screenSize]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -35,52 +69,44 @@ export default function AppPage() {
         };
     }, []);
 
-    if (screenSize.width < 768) {
+    if (screenSize.width < 1024) {
         return (
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col text-center">
-                    <img
-                        src="/screen-size.png"
-                        className="h-[200px] w-[200px]"
-                        alt="Screen Size"
+            <div className="flex flex-col divide-y divide-ck-primary w-screen h-screen">
+                <div ref={navref}>
+                    <Topbar
+                        kitname={kitname}
+                        showLogoText={screenSize.width > 380}
                     />
-                    <p className="py-6">
-                        Oops! We are not supporting smaller screen sizes. Please
-                        use a bigger screen.
-                    </p>
-                    <div className="flex flex-row gap-4">
-                        <Link to="/" aria-label="Home">
-                            <button
-                                type="button"
-                                className="btn btn-outline btn-sm rounded"
-                            >
-                                Home
-                            </button>
-                        </Link>
-                        <Link to="/#tools" aria-label="Meet the tools">
-                            <button
-                                type="button"
-                                className="btn btn-outline btn-sm rounded"
-                            >
-                                Meet the tools
-                            </button>
-                        </Link>
-                    </div>
                 </div>
+                {outletSize.height ? (
+                    <div
+                        className="w-full"
+                        style={{ height: outletSize.height + "%" }}
+                    >
+                        <KitView kitname={kitname} />
+                    </div>
+                ) : null}
             </div>
         );
     }
 
     return (
         <div className="flex flex-row divide-x divide-ck-primary">
-            <div ref={sidebarRef} className="w-fit">
-                <Sidebar />
+            <div ref={navref} className="w-fit">
+                <Sidebar kitname={kitname} />
             </div>
-            {outletWidth ? (
-                <div className="h-screen" style={{ width: outletWidth + "%" }}>
-                    <Outlet />
+            {outletSize.width ? (
+                <div
+                    className="h-screen"
+                    style={{ width: outletSize.width + "%" }}
+                >
+                    <KitView kitname={kitname} />
                 </div>
             ) : null}
         </div>
     );
-}
+};
+
+AppView.propTypes = {
+    kitname: PropTypes.string,
+};

@@ -4,10 +4,7 @@ import Config from "./src/constants/config.json" assert { type: "json" };
 import Kits from "./src/constants/kitslist.json" assert { type: "json" };
 
 (function () {
-    const sourceData = [
-        { url: "/", changefreq: "daily", priority: 1 },
-        { url: "/app", changefreq: "daily", priority: 1 },
-    ];
+    const sourceData = [{ url: "/", changefreq: "daily", priority: 1 }];
 
     for (let i = 0; i < Kits.length; i++) {
         sourceData.push({

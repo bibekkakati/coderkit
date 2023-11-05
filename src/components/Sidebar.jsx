@@ -1,5 +1,6 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import BeautifyIcon from "../assets/BeautifyIcon";
 import JsonIcon from "../assets/JsonIcon";
 import JwtIcon from "../assets/JwtIcon";
@@ -7,9 +8,9 @@ import LoremIcon from "../assets/LoremIcon";
 import MinifyIcon from "../assets/MinifyIcon";
 import TextCaseIcon from "../assets/TextCaseIcon";
 import TransformIcon from "../assets/TransformIcon";
-import Config from "../constants/config.json";
 import KitsList from "../constants/kitslist.json";
 import debounce from "../utils/debounce";
+import Logo from "./Logo";
 
 const iconcomponents = {
     JSONFormatter: <JsonIcon />,
@@ -25,11 +26,7 @@ const iconcomponents = {
     LoremIpsumGenerator: <LoremIcon />,
 };
 
-const FeedbackURL = Config.feedback_url;
-
-export default function Sidebar() {
-    const params = useParams();
-    const activeLink = params?.kitname;
+export default function Sidebar({ kitname }) {
     const [kitItems, setKitItems] = useState(
         KitsList.filter((ki) => ki.active)
     );
@@ -48,27 +45,11 @@ export default function Sidebar() {
     };
 
     return (
-        <div className="drawer lg:drawer-open md:drawer-open">
+        <div className="drawer drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-side">
                 <ul className="menu px-4 w-80 min-h-full text-base-content">
-                    <div className="w-fit indicator ml-3">
-                        <span className="indicator-item indicator-middle badge badge-xs badge-neutral rounded font-bold mr-[-24px]">
-                            beta
-                        </span>
-                        <Link to="/" aria-label="Home">
-                            <div className="inline-flex items-center">
-                                <img
-                                    src="/android-chrome-192x192.png"
-                                    className="h-[36px] w-[36px]"
-                                    alt="CoderKit"
-                                />
-                                <span className="ml-2 text-lg font-bold">
-                                    CoderKit
-                                </span>
-                            </div>
-                        </Link>
-                    </div>
+                    <Logo />
                     <span className="divider lg:divider-vertical"></span>
                     <input
                         type="text"
@@ -77,7 +58,8 @@ export default function Sidebar() {
                         onChange={debounce(handleSearch)}
                     />
                     {kitItems.map(({ label, link, component }, index) => {
-                        const linkClass = activeLink == link ? "active" : "";
+                        const linkClass =
+                            kitname == link ? "active rounded" : "";
                         return (
                             <li key={index}>
                                 <Link
@@ -93,17 +75,15 @@ export default function Sidebar() {
                     })}
                 </ul>
             </div>
-            {FeedbackURL && (
-                <button className="btn btn-xs btn-primary rounded fixed pb-1 bottom-[-3px] left-10">
-                    <Link
-                        to={FeedbackURL}
-                        target="__blank"
-                        aria-label="Feedback"
-                    >
-                        Feedback
-                    </Link>
-                </button>
-            )}
+            <button className="btn btn-xs btn-primary rounded fixed pb-1 bottom-[-3px] left-10">
+                <Link to="/feedback" target="__blank" aria-label="Feedback">
+                    Feedback
+                </Link>
+            </button>
         </div>
     );
 }
+
+Sidebar.propTypes = {
+    kitname: PropTypes.string,
+};
