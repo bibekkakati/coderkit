@@ -1,8 +1,8 @@
 import { lazy } from "react";
 
-export const HomePage = lazy(() => import("./Home"));
-export const AppPage = lazy(() => import("./App"));
-export const FeedbackPage = lazy(() => import("./Feedback"));
-export const ErrorPage = lazy(() => import("./Error"));
-export const TermsOfServicePage = lazy(() => import("./TermsOfService"));
-export const PrivacyPolicyPage = lazy(() => import("./PrivacyPolicy"));
+export const HomePage = lazy(() => import("./HomePage"));
+export const AppPage = lazy(() => import("./AppPage"));
+export const FeedbackPage = lazy(() => import("./FeedbackPage"));
+export const ErrorPage = lazy(() => import("./ErrorPage"));
+export const TermsOfServicePage = lazy(() => import("./TermsOfServicePage"));
+export const PrivacyPolicyPage = lazy(() => import("./PrivacyPolicyPage"));

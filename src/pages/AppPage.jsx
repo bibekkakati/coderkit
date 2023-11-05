@@ -6,7 +6,7 @@ import KitsList from "../constants/kitslist.json";
 
 const KitView = lazy(() => import("../components/KitView"));
 const Sidebar = lazy(() => import("../components/Sidebar"));
-const ErrorPage = lazy(() => import("./Error"));
+const ErrorPage = lazy(() => import("./ErrorPage"));
 
 export default function AppPage() {
     const params = useParams();
