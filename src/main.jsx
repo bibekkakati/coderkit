@@ -11,7 +11,7 @@ import {
     HomePage,
     PrivacyPolicyPage,
     TermsOfServicePage,
-} from "./pages";
+} from "./pages/index";
 
 const router = createBrowserRouter([
     {
