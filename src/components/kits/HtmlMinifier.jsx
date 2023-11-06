@@ -1,47 +1,51 @@
 import { useEffect, useState } from "react";
+import useKitStorage from "../../hooks/useKitStorage";
 import minifyHtml from "../../utils/minifyHtml";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
 import TextBox from "../TextBox";
 
 export default function HtmlMinifier() {
-    const [inputV, setInputV] = useState("");
+    const kitStorage = useKitStorage();
+    const localData = {
+        inputV: kitStorage.get("inputV"),
+    };
+
+    const [inputV, setInputV] = useState(localData.inputV || "");
     const [output, setOutput] = useState({
         value: "",
         error: "",
     });
 
     useEffect(() => {
-        async function processInput() {
-            try {
-                const iv = inputV.trim();
+        try {
+            const iv = inputV.trim();
 
-                if (!iv.length) {
-                    return setOutput({
-                        value: "",
-                        error: "",
-                    });
-                }
-
-                const ov = minifyHtml(iv);
-
-                return setOutput({
-                    value: ov,
-                    error: "",
-                });
-            } catch (error) {
+            if (!iv.length) {
                 return setOutput({
                     value: "",
-                    error: error.message,
+                    error: "",
                 });
             }
+
+            const ov = minifyHtml(iv);
+
+            return setOutput({
+                value: ov,
+                error: "",
+            });
+        } catch (error) {
+            return setOutput({
+                value: "",
+                error: error.message,
+            });
         }
-        processInput();
     }, [inputV]);
 
     const onInput = (e) => {
         const iv = e.target.value || "";
-        return setInputV(iv);
+        setInputV(iv);
+        kitStorage.set(iv, "inputV");
     };
 
     return (

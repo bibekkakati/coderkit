@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import useKitStorage from "../../hooks/useKitStorage";
 import beautifyHtml from "../../utils/beautifyHtml";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
@@ -12,50 +13,56 @@ const indentingSpaceOptions = [
 ];
 
 export default function HtmlBeautifier() {
+    const kitStorage = useKitStorage();
+    const localData = {
+        space: Number(kitStorage.get("space")),
+        inputV: kitStorage.get("inputV"),
+    };
+
     const [indentingSpace, setIndentingSpace] = useState(
-        indentingSpaceOptions[0].value
+        localData.space || indentingSpaceOptions[0].value
     );
-    const [inputV, setInputV] = useState("");
+    const [inputV, setInputV] = useState(localData.inputV || "");
     const [output, setOutput] = useState({
         value: "",
         error: "",
     });
 
     useEffect(() => {
-        async function processInput() {
-            try {
-                const iv = inputV.trim();
+        try {
+            const iv = inputV.trim();
 
-                if (!iv.length) {
-                    return setOutput({
-                        value: "",
-                        error: "",
-                    });
-                }
-
-                const ov = beautifyHtml(iv, indentingSpace);
-
-                return setOutput({
-                    value: ov,
-                    error: "",
-                });
-            } catch (error) {
+            if (!iv.length) {
                 return setOutput({
                     value: "",
-                    error: error.message,
+                    error: "",
                 });
             }
+
+            const ov = beautifyHtml(iv, indentingSpace);
+
+            return setOutput({
+                value: ov,
+                error: "",
+            });
+        } catch (error) {
+            return setOutput({
+                value: "",
+                error: error.message,
+            });
         }
-        processInput();
     }, [inputV, indentingSpace]);
 
     const updateIndentingSpace = (e) => {
-        setIndentingSpace(Number(e.target.value));
+        const space = Number(e.target.value);
+        setIndentingSpace(space);
+        kitStorage.set(space, "space");
     };
 
     const onInput = (e) => {
         const iv = e.target.value || "";
-        return setInputV(iv);
+        setInputV(iv);
+        kitStorage.set(iv, "inputV");
     };
 
     return (

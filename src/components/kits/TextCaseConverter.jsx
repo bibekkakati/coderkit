@@ -4,6 +4,7 @@ import CopyBtn from "../CopyBtn";
 import Output from "../Output";
 import Select from "../Select";
 import TextBox from "../TextBox";
+import useKitStorage from "../../hooks/useKitStorage";
 
 const sampleInput = "THE QUICK brown fox";
 const caseOptions = [
@@ -55,8 +56,16 @@ const caseOptions = [
 ];
 
 export default function TextCaseConverter() {
-    const [textCase, setTextCase] = useState(caseOptions[0].value);
-    const [inputV, setInputV] = useState(sampleInput);
+    const kitStorage = useKitStorage();
+    const localData = {
+        textCase: kitStorage.get("textCase"),
+        inputV: kitStorage.get("inputV"),
+    };
+
+    const [textCase, setTextCase] = useState(
+        localData.textCase || caseOptions[0].value
+    );
+    const [inputV, setInputV] = useState(localData.inputV || sampleInput);
     const [output, setOutput] = useState({
         value: "",
         error: "",
@@ -90,12 +99,15 @@ export default function TextCaseConverter() {
     }, [inputV, textCase]);
 
     const updateTextCase = (e) => {
-        setTextCase(e.target.value);
+        const tc = e.target.value;
+        setTextCase(tc);
+        kitStorage.set(tc, "textCase");
     };
 
     const onInput = (e) => {
         const iv = e.target.value || "";
-        return setInputV(iv);
+        setInputV(iv);
+        kitStorage.set(iv, "inputV");
     };
 
     return (

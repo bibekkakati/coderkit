@@ -1,17 +1,24 @@
 import { useEffect, useState } from "react";
+import useKitStorage from "../../hooks/useKitStorage";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
 import Select from "../Select";
 import TextBox from "../TextBox";
 
 const modes = [
-    { value: 0, label: "Encode" },
-    { value: 1, label: "Decode" },
+    { value: "encode", label: "Encode" },
+    { value: "decode", label: "Decode" },
 ];
 
 export default function Base64Transformer() {
-    const [mode, setMode] = useState(modes[0].value);
-    const [inputV, setInputV] = useState("");
+    const kitStorage = useKitStorage();
+    const localData = {
+        mode: kitStorage.get("mode"),
+        inputV: kitStorage.get("inputV"),
+    };
+
+    const [mode, setMode] = useState(localData.mode || modes[0].value);
+    const [inputV, setInputV] = useState(localData.inputV || "");
     const [output, setOutput] = useState({
         value: "",
         error: "",
@@ -29,7 +36,7 @@ export default function Base64Transformer() {
             }
 
             let ov = "";
-            if (mode == 0) {
+            if (mode == "encode") {
                 ov = window.btoa(iv);
             } else {
                 ov = window.atob(iv);
@@ -43,7 +50,7 @@ export default function Base64Transformer() {
             return setOutput({
                 value: "",
                 error:
-                    mode == 0
+                    mode == "encode"
                         ? `String is not valid for encoding`
                         : `String is not encoded correctly`,
             });
@@ -51,12 +58,15 @@ export default function Base64Transformer() {
     }, [inputV, mode]);
 
     const onModeChange = (e) => {
-        setMode(e.target.value);
+        const mode = e.target.value;
+        setMode(mode);
+        kitStorage.set(mode, "mode");
     };
 
     const onInput = (e) => {
         const iv = e.target.value || "";
-        return setInputV(iv);
+        setInputV(iv);
+        kitStorage.set(iv, "inputV");
     };
 
     return (

@@ -26,7 +26,17 @@ export default function Output({
     const [wrapState, setWrapState] = useState(wrap);
 
     useEffect(() => {
-        if (outputRef.current && prettify && value) {
+        if (outputRef.current) {
+            if (!value) {
+                outputRef.current.innerHTML = "";
+                return;
+            }
+
+            if (!prettify) {
+                outputRef.current.innerHTML = value || "";
+                return;
+            }
+
             try {
                 // Check if value is in JSON format
                 JSON.parse(value);
@@ -60,7 +70,9 @@ export default function Output({
             <div className="flex flex-row justify-between">
                 {label && (
                     <span className="label">
-                        <span className="label-text font-bold">{label}</span>
+                        <span className="label-text font-semibold">
+                            {label}
+                        </span>
                     </span>
                 )}
                 <div className="flex flex-row gap-1 items-center">
@@ -75,7 +87,7 @@ export default function Output({
                 {error ? (
                     <p className="p-1 text-error">{error}</p>
                 ) : (
-                    <code ref={outputRef}>{!prettify ? value : ""}</code>
+                    <code ref={outputRef}></code>
                 )}
             </pre>
         </>

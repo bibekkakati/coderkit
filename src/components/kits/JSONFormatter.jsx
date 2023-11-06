@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import useKitStorage from "../../hooks/useKitStorage.js";
 import CopyBtn from "../CopyBtn.jsx";
 import Output from "../Output.jsx";
 import Select from "../Select.jsx";
@@ -13,10 +14,16 @@ const indentingSpaceOptions = [
 ];
 
 export default function JSONFormatter() {
+    const kitStorage = useKitStorage();
+    const localData = {
+        space: Number(kitStorage.get("space")),
+        inputV: kitStorage.get("inputV"),
+    };
+
     const [indentingSpace, setIndentingSpace] = useState(
-        indentingSpaceOptions[0].value
+        localData.space || indentingSpaceOptions[0].value
     );
-    const [inputV, setInputV] = useState(sampleInput);
+    const [inputV, setInputV] = useState(localData.inputV || sampleInput);
     const [output, setOutput] = useState({
         value: "",
         error: "",
@@ -59,12 +66,15 @@ export default function JSONFormatter() {
     }, [inputV, indentingSpace]);
 
     const updateIndentingSpace = (e) => {
-        setIndentingSpace(Number(e.target.value));
+        const space = Number(e.target.value);
+        setIndentingSpace(space);
+        kitStorage.set(space, "space");
     };
 
     const onInput = (e) => {
-        const iv = e.target.value || "";
-        return setInputV(iv);
+        const iv = e.target.value;
+        setInputV(iv);
+        kitStorage.set(iv, "inputV");
     };
 
     return (

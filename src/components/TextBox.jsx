@@ -12,7 +12,9 @@ export default function TextBox({
             <div className="flex flex-row justify-between">
                 {label && (
                     <span className="label">
-                        <span className="label-text font-bold">{label}</span>
+                        <span className="label-text font-semibold">
+                            {label}
+                        </span>
                     </span>
                 )}
                 <div className="flex flex-row gap-1 items-center">

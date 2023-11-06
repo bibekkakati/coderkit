@@ -3,11 +3,18 @@ import decodeJwt from "../../utils/decodeJwt";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
 import TextBox from "../TextBox";
+import useKitStorage from "../../hooks/useKitStorage";
+
+const sample =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 
 export default function JwtDecoder() {
-    const [inputV, setInputV] = useState(
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-    );
+    const kitStorage = useKitStorage();
+    const localData = {
+        inputV: kitStorage.get("inputV"),
+    };
+
+    const [inputV, setInputV] = useState(localData.inputV || sample);
     const [output, setOutput] = useState({
         header: "",
         payload: "",
@@ -44,7 +51,8 @@ export default function JwtDecoder() {
 
     const onInput = (e) => {
         const iv = e.target.value || "";
-        return setInputV(iv);
+        setInputV(iv);
+        kitStorage.set(iv, "inputV");
     };
 
     return (

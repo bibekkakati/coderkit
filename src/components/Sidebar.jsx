@@ -48,7 +48,7 @@ export default function Sidebar({ kitname }) {
         <div className="drawer drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-side">
-                <ul className="menu px-4 w-80 min-h-full text-base-content">
+                <ul className="menu px-4 w-72 min-h-full text-base-content">
                     <Logo />
                     <span className="divider lg:divider-vertical"></span>
                     <input
@@ -59,7 +59,9 @@ export default function Sidebar({ kitname }) {
                     />
                     {kitItems.map(({ label, link, component }, index) => {
                         const linkClass =
-                            kitname == link ? "active rounded" : "";
+                            kitname == link
+                                ? "active rounded font-medium"
+                                : "font-medium";
                         return (
                             <li key={index}>
                                 <Link

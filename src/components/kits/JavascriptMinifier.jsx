@@ -1,32 +1,41 @@
 import { useEffect, useState } from "react";
+import useKitStorage from "../../hooks/useKitStorage";
 import minifyJavascript from "../../utils/minifyJavascript";
 import CheckBox from "../CheckBox";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
 import TextBox from "../TextBox";
 
+const Options = [
+    {
+        label: "Mangle names",
+        key: "mangle",
+        checked: true,
+        disabled: false,
+    },
+    {
+        label: "Keep class names",
+        key: "keep_classnames",
+        checked: false,
+        disabled: false,
+    },
+    {
+        label: "Keep function names",
+        key: "keep_fnames",
+        checked: false,
+        disabled: false,
+    },
+];
+
 export default function JavascriptMinifier() {
-    const [options, setOptions] = useState([
-        {
-            label: "Mangle names",
-            key: "mangle",
-            checked: true,
-            disabled: false,
-        },
-        {
-            label: "Keep class names",
-            key: "keep_classnames",
-            checked: false,
-            disabled: false,
-        },
-        {
-            label: "Keep function names",
-            key: "keep_fnames",
-            checked: false,
-            disabled: false,
-        },
-    ]);
-    const [inputV, setInputV] = useState("");
+    const kitStorage = useKitStorage();
+    const localData = {
+        options: JSON.parse(kitStorage.get("options") || null),
+        inputV: kitStorage.get("inputV"),
+    };
+
+    const [options, setOptions] = useState(localData.options || Options);
+    const [inputV, setInputV] = useState(localData.inputV || "");
     const [output, setOutput] = useState({
         value: "",
         error: "",
@@ -85,12 +94,14 @@ export default function JavascriptMinifier() {
             }
         }
 
-        return setOptions(_options);
+        setOptions(_options);
+        kitStorage.set(JSON.stringify(_options), "options");
     };
 
     const onInput = (e) => {
         const iv = e.target.value || "";
-        return setInputV(iv);
+        setInputV(iv);
+        kitStorage.set(iv, "inputV");
     };
 
     return (

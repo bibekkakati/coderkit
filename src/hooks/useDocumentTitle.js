@@ -1,6 +1,11 @@
 import { useRef, useEffect } from "react";
 
-function useDocumentTitle(title, description, prevailOnUnmount = false) {
+// hook to manipulate site title and description
+export default function useDocumentTitle(
+    title,
+    description,
+    prevailOnUnmount = false
+) {
     const defaultTitle = useRef(document.title);
 
     useEffect(() => {
@@ -24,5 +29,3 @@ function useDocumentTitle(title, description, prevailOnUnmount = false) {
         [prevailOnUnmount]
     );
 }
-
-export default useDocumentTitle;
