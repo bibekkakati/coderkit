@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import KitsList from "../constants/kitslist.json";
-import Config from "../constants/config.json";
 
 export default function HomePage() {
     useDocumentTitle(
@@ -69,7 +68,7 @@ const KitsTable = () => (
         </div>
         <div className="mt-6 flex flex-col">
             <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                <div className="inline-block min-w-full py-2 align-middle px-4 md:px-6 lg:px-8">
                     <div className="overflow-hidden border border-neutral rounded-md">
                         <table className="min-w-full">
                             <tbody className="divide-y divide-neutral">
@@ -78,18 +77,22 @@ const KitsTable = () => (
                                         key={kit.link}
                                         className="hover:bg-base-100"
                                     >
-                                        <td className="whitespace-nowrap px-4 py-4 text-sm font-bold hover:text-ck-primary">
+                                        <td className="whitespace-nowrap px-4 py-4 text-sm">
                                             <Link
                                                 to={`/app/${kit.link}`}
                                                 aria-label={kit.label}
+                                                className="font-bold hover:text-ck-primary"
                                             >
                                                 {kit.label}
                                             </Link>
+                                            <p className="lg:hidden mt-2 whitespace-pre-wrap">
+                                                {kit.short_desc}
+                                            </p>
                                         </td>
-                                        <td className="whitespace-nowrap px-4 py-4 text-sm">
+                                        <td className="hidden lg:table-cell whitespace-nowrap px-4 py-4 text-sm">
                                             {kit.short_desc}
                                         </td>
-                                        <td className="whitespace-nowrap px-4 py-4">
+                                        <td className="hidden md:block whitespace-nowrap px-4 py-4">
                                             <Link
                                                 to={`/app/${kit.link}`}
                                                 aria-label={kit.label}
@@ -191,8 +194,8 @@ const Features = () => (
 const Footer = () => (
     <div className="col-span-12 max-w-7xl overflow-hidden py-8">
         <div className="mx-auto">
-            <div className="flex flex-wrap items-center justify-between">
-                <div className="w-auto py-8">
+            <div className="flex flex-wrap items-center justify-between w-full">
+                <div className="w-fit py-2 mx-auto md:mx-0">
                     <Link to="/" aria-label="Home">
                         <div className="inline-flex items-center">
                             <img
@@ -206,9 +209,9 @@ const Footer = () => (
                         </div>
                     </Link>
                 </div>
-                <div className="w-auto py-8">
-                    <ul className="-m-5 flex flex-wrap items-center">
-                        <li className="p-5">
+                <div className="-mt-2 w-fit py-2 mx-auto md:mx-0">
+                    <ul className="flex flex-wrap items-center">
+                        <li className="px-5">
                             <Link
                                 className="font-medium text-gray-600 hover:text-gray-700"
                                 to="/privacy-policy"
@@ -217,7 +220,7 @@ const Footer = () => (
                                 Privacy Policy
                             </Link>
                         </li>
-                        <li className="p-5">
+                        <li className="px-5">
                             <Link
                                 className="font-medium text-gray-600 hover:text-gray-700"
                                 to="/terms-of-service"
@@ -226,10 +229,10 @@ const Footer = () => (
                                 Terms of Service
                             </Link>
                         </li>
-                        <li className="p-5">
+                        <li className="px-5">
                             <Link
                                 className="font-medium text-gray-600 hover:text-gray-700"
-                                to={Config.feedback_url}
+                                to="/feedback"
                                 aria-label="Feedback"
                             >
                                 Feedback
