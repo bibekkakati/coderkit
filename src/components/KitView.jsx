@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import { Suspense, lazy } from "react";
 import KitsList from "../constants/kitslist.json";
-import useDocumentTitle from "../hooks/useDocumentTitle";
 import ScreenLoader from "./ScreenLoader";
 
 const kitcomponents = {
@@ -21,13 +20,11 @@ const kitcomponents = {
 export default function KitView({ kitname }) {
     const kititem = KitsList.find(
         (kit) =>
-            kit.active &&
             kit.link === kitname &&
             kit.component &&
             kitcomponents[kit.component]
     );
-    const { label, meta_desc, short_desc, component } = kititem;
-    useDocumentTitle(`${label} | ${short_desc}`, meta_desc);
+    const { component } = kititem;
 
     // Main render - Kit
     const Kit = kitcomponents[component];

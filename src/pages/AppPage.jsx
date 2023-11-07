@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
-import { lazy, useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
+import ScreenLoader from "../components/ScreenLoader";
 import Topbar from "../components/Topbar";
 import KitsList from "../constants/kitslist.json";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const KitView = lazy(() => import("../components/KitView"));
 const Sidebar = lazy(() => import("../components/Sidebar"));
@@ -17,17 +19,22 @@ export default function AppPage() {
         return <Navigate to={`/app/${link}`} replace={true} />;
     }
 
-    const isValidKitName = KitsList.find(
-        (kit) => kit.link === kitname && kit.active
-    );
-    if (!isValidKitName) {
-        return <ErrorPage />;
+    const kitdata = KitsList.find((kit) => kit.link === kitname && kit.active);
+    if (!kitdata) {
+        return (
+            <Suspense fallback={<ScreenLoader />}>
+                <ErrorPage />
+            </Suspense>
+        );
     }
 
-    return <AppView kitname={kitname} />;
+    return <AppView kitdata={kitdata} />;
 }
 
-const AppView = ({ kitname }) => {
+const AppView = ({ kitdata }) => {
+    const { label, link: kitname, short_desc, meta_desc } = kitdata;
+    useDocumentTitle(`${label} | ${short_desc}`, meta_desc);
+
     const navref = useRef(null);
     const [screenSize, setScreenSize] = useState({
         width: window.innerWidth,
@@ -73,17 +80,21 @@ const AppView = ({ kitname }) => {
         return (
             <div className="flex flex-col divide-y divide-ck-primary w-screen h-screen">
                 <div ref={navref}>
-                    <Topbar
-                        kitname={kitname}
-                        showLogoText={screenSize.width > 380}
-                    />
+                    <Suspense>
+                        <Topbar
+                            kitname={kitname}
+                            showLogoText={screenSize.width > 380}
+                        />
+                    </Suspense>
                 </div>
                 {outletSize.height ? (
                     <div
                         className="w-full"
                         style={{ height: outletSize.height + "%" }}
                     >
-                        <KitView kitname={kitname} />
+                        <Suspense fallback={<ScreenLoader />}>
+                            <KitView kitname={kitname} />
+                        </Suspense>
                     </div>
                 ) : null}
             </div>
@@ -93,14 +104,18 @@ const AppView = ({ kitname }) => {
     return (
         <div className="flex flex-row divide-x divide-ck-primary">
             <div ref={navref} className="w-fit">
-                <Sidebar kitname={kitname} />
+                <Suspense>
+                    <Sidebar kitname={kitname} />
+                </Suspense>
             </div>
             {outletSize.width ? (
                 <div
                     className="h-screen"
                     style={{ width: outletSize.width + "%" }}
                 >
-                    <KitView kitname={kitname} />
+                    <Suspense fallback={<ScreenLoader />}>
+                        <KitView kitname={kitname} />
+                    </Suspense>
                 </div>
             ) : null}
         </div>
@@ -108,5 +123,5 @@ const AppView = ({ kitname }) => {
 };
 
 AppView.propTypes = {
-    kitname: PropTypes.string,
+    kitdata: PropTypes.object,
 };
