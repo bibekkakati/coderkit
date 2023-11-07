@@ -4,12 +4,13 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "dev": "vite",
-        "prebuild": "node sitemap.js",
+        "dev": "npm run app-pages && vite",
+        "prebuild": "npm run sitemap && npm run app-pages",
         "build": "vite build",
         "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
-        "sitemap": "node sitemap.js"
+        "sitemap": "node scripts/sitemap.js",
+        "app-pages": "node scripts/app-pages.js"
     },
     "dependencies": {
         "highlight.js": "^11.8.0",
@@ -30,6 +31,7 @@
         "eslint-plugin-react": "^7.32.2",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.3",
+        "jsdom": "^22.1.0",
         "postcss": "^8.4.31",
         "rollup-plugin-visualizer": "^5.9.2",
         "sitemap": "^7.1.1",
