@@ -6,7 +6,7 @@ import Output from "../Output";
 import Select from "../Select";
 import TextBox from "../TextBox";
 
-const indentingSpaceOptions = [
+const IndentingSpaceOptions = [
     { value: 2, label: "2 spaces" },
     { value: 3, label: "3 spaces" },
     { value: 4, label: "4 spaces" },
@@ -20,7 +20,7 @@ export default function CssBeautifier() {
     };
 
     const [indentingSpace, setIndentingSpace] = useState(
-        localData.space || indentingSpaceOptions[0].value
+        localData.space || IndentingSpaceOptions[0].value
     );
     const [inputV, setInputV] = useState(localData.inputV || "");
     const [output, setOutput] = useState({
@@ -85,7 +85,7 @@ export default function CssBeautifier() {
                             <Select
                                 value={indentingSpace}
                                 onChange={updateIndentingSpace}
-                                options={indentingSpaceOptions}
+                                options={IndentingSpaceOptions}
                             />
                             <CopyBtn value={output.value} />
                         </>

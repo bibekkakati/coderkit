@@ -4,7 +4,7 @@ import KitsList from "../constants/kitslist.json";
 
 export default function HomePage() {
     useDocumentTitle(
-        "Developer's Companion",
+        "Streamlining Development with Essential Tools",
         "Empower your coding journey with our all-in-one Developer Toolkit, designed to boost your productivity and streamline essential tasks"
     );
     return (

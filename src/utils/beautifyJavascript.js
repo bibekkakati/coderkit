@@ -1,6 +1,6 @@
 import js_beautify from "js-beautify";
 
-export default function beautifyJavascript(code, indentingSpace) {
+export default function beautifyJavascript(code, indentingSpace = 2) {
     const r = js_beautify(code, {
         indent_char: " ",
         max_preserve_newlines: "2",

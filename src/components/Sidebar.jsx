@@ -1,30 +1,15 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { lazy, useState } from "react";
 import { Link } from "react-router-dom";
-import BeautifyIcon from "../assets/BeautifyIcon";
-import JsonIcon from "../assets/JsonIcon";
-import JwtIcon from "../assets/JwtIcon";
-import LoremIcon from "../assets/LoremIcon";
-import MinifyIcon from "../assets/MinifyIcon";
-import TextCaseIcon from "../assets/TextCaseIcon";
-import TransformIcon from "../assets/TransformIcon";
 import KitsList from "../constants/kitslist.json";
 import debounce from "../utils/debounce";
 import Logo from "./Logo";
 
-const iconcomponents = {
-    JSONFormatter: <JsonIcon />,
-    TextCaseConverter: <TextCaseIcon />,
-    JavascriptMinifier: <MinifyIcon />,
-    HtmlMinifier: <MinifyIcon />,
-    CssMinifier: <MinifyIcon />,
-    JavascriptBeautifier: <BeautifyIcon />,
-    HtmlBeautifier: <BeautifyIcon />,
-    CssBeautifier: <BeautifyIcon />,
-    Base64Transformer: <TransformIcon />,
-    JwtDecoder: <JwtIcon />,
-    LoremIpsumGenerator: <LoremIcon />,
-};
+const iconcomponents = {};
+for (let i = 0; i < KitsList.length; i++) {
+    const { component, icon } = KitsList[i];
+    iconcomponents[component] = lazy(() => import(`../assets/${icon}.jsx`)); // extension is required in dynamic imports
+}
 
 export default function Sidebar({ kitname }) {
     const [kitItems, setKitItems] = useState(
@@ -58,6 +43,7 @@ export default function Sidebar({ kitname }) {
                         onChange={debounce(handleSearch)}
                     />
                     {kitItems.map(({ label, link, component }, index) => {
+                        const Icon = iconcomponents[component];
                         const linkClass =
                             kitname == link
                                 ? "active rounded font-medium"
@@ -69,7 +55,7 @@ export default function Sidebar({ kitname }) {
                                     aria-label={label}
                                     className={linkClass}
                                 >
-                                    {iconcomponents[component]}
+                                    <Icon />
                                     {label}
                                 </Link>
                             </li>

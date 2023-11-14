@@ -1,27 +1,16 @@
 import { useEffect, useState } from "react";
 import useKitStorage from "../../hooks/useKitStorage";
-import beautifyJavascript from "../../utils/beautifyJavascript";
+import minifyHtml from "../../utils/minifyHtml";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
-import Select from "../Select";
 import TextBox from "../TextBox";
 
-const IndentingSpaceOptions = [
-    { value: 2, label: "2 spaces" },
-    { value: 3, label: "3 spaces" },
-    { value: 4, label: "4 spaces" },
-];
-
-export default function JavascriptBeautifier() {
+export default function XmlMinifier() {
     const kitStorage = useKitStorage();
     const localData = {
-        space: Number(kitStorage.get("space")),
         inputV: kitStorage.get("inputV"),
     };
 
-    const [indentingSpace, setIndentingSpace] = useState(
-        localData.space || IndentingSpaceOptions[0].value
-    );
     const [inputV, setInputV] = useState(localData.inputV || "");
     const [output, setOutput] = useState({
         value: "",
@@ -39,7 +28,7 @@ export default function JavascriptBeautifier() {
                 });
             }
 
-            const ov = beautifyJavascript(iv, indentingSpace);
+            const ov = minifyHtml(iv);
 
             return setOutput({
                 value: ov,
@@ -51,13 +40,7 @@ export default function JavascriptBeautifier() {
                 error: error.message,
             });
         }
-    }, [inputV, indentingSpace]);
-
-    const updateIndentingSpace = (e) => {
-        const space = Number(e.target.value);
-        setIndentingSpace(space);
-        kitStorage.set(space, "space");
-    };
+    }, [inputV]);
 
     const onInput = (e) => {
         const iv = e.target.value || "";
@@ -79,14 +62,10 @@ export default function JavascriptBeautifier() {
                     value={output.value}
                     error={output.error}
                     prettify={true}
-                    language="javascript"
+                    language="xml"
+                    wrap={true}
                     actions={
                         <>
-                            <Select
-                                value={indentingSpace}
-                                onChange={updateIndentingSpace}
-                                options={IndentingSpaceOptions}
-                            />
                             <CopyBtn value={output.value} />
                         </>
                     }

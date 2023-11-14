@@ -3,6 +3,7 @@
         "label": "JSON Formatter/Validator",
         "link": "json-formatter-validator",
         "component": "JSONFormatter",
+        "icon": "JsonIcon",
         "short_desc": "Tame unruly JSON data with ease, ensuring readability and error-free code",
         "meta_desc": "Refine Your JSON Data with Our JSON Formatter/Validator Tool. Ensure Well-Structured and Error-Free Data for Seamless Integration.",
         "active": true
@@ -11,6 +12,7 @@
         "label": "Text Case Converter",
         "link": "text-case-converter",
         "component": "TextCaseConverter",
+        "icon": "TextCaseIcon",
         "short_desc": "Convert text between various cases (eg, CamelCase, snake_case) effortlessly",
         "meta_desc": "Convert Text Case Seamlessly with Our Text Case Converter Tool. Transform Text to Upper, Lower, Sentence, and More for Enhanced Readability.",
         "active": true
@@ -19,54 +21,97 @@
         "label": "Javascript Minifier",
         "link": "javascript-minifier",
         "component": "JavascriptMinifier",
+        "icon": "MinifyIcon",
         "short_desc": "Reduce file size and boost website performance by minifying your JavaScript code",
         "meta_desc": "Boost Website Performance with Our JavaScript Minifier Tool. Optimize Code for Faster Loading and Improved User Experience.",
-        "active": true
-    },
-    {
-        "label": "HTML Minifier",
-        "link": "html-minifier",
-        "component": "HtmlMinifier",
-        "short_desc": "Optimize your HTML code for faster loading times and improved user experience",
-        "meta_desc": "Optimize Your Website's HTML with Our HTML Minifier Tool. Reduce File Size and Boost Loading Speed for Improved Web Performance.",
-        "active": true
-    },
-    {
-        "label": "CSS Minifier",
-        "link": "css-minifier",
-        "component": "CssMinifier",
-        "short_desc": "Streamline your stylesheets to enhance website performance",
-        "meta_desc": "Streamline Your Stylesheets with Our CSS Minifier Tool. Boost Website Performance by Reducing File Size and Load Times.",
         "active": true
     },
     {
         "label": "Javascript Beautifier",
         "link": "javascript-beautifier",
         "component": "JavascriptBeautifier",
+        "icon": "BeautifyIcon",
         "short_desc": "Make your JavaScript code more readable and consistent",
         "meta_desc": "Enhance Code Clarity with Our JavaScript Beautifier Tool. Elevate Readability and Consistency in Your Scripts for Streamlined Development.",
+        "active": true
+    },
+    {
+        "label": "HTML Minifier",
+        "link": "html-minifier",
+        "component": "HtmlMinifier",
+        "icon": "MinifyIcon",
+        "short_desc": "Optimize your HTML code for faster loading times and improved user experience",
+        "meta_desc": "Optimize Your Website's HTML with Our HTML Minifier Tool. Reduce File Size and Boost Loading Speed for Improved Web Performance.",
         "active": true
     },
     {
         "label": "HTML Beautifier",
         "link": "html-beautifier",
         "component": "HtmlBeautifier",
+        "icon": "BeautifyIcon",
         "short_desc": "Elevate the aesthetics of your HTML code for better readability",
         "meta_desc": "Elevate Your HTML Code with Our HTML Beautifier Tool. Enhance Readability and Consistency for Cleaner Web Development.",
+        "active": true
+    },
+    {
+        "label": "CSS Minifier",
+        "link": "css-minifier",
+        "component": "CssMinifier",
+        "icon": "MinifyIcon",
+        "short_desc": "Streamline your stylesheets to enhance website performance",
+        "meta_desc": "Streamline Your Stylesheets with Our CSS Minifier Tool. Boost Website Performance by Reducing File Size and Load Times.",
         "active": true
     },
     {
         "label": "CSS Beautifier",
         "link": "css-beautifier",
         "component": "CssBeautifier",
+        "icon": "BeautifyIcon",
         "short_desc": "Improve the structure and presentation of your CSS styles",
         "meta_desc": "Elevate Your Code Aesthetics with Our CSS Beautifier Tool. Enhance Readability and Consistency in Your Stylesheets for Optimal Web Development.",
+        "active": true
+    },
+    {
+        "label": "XML Minifier",
+        "link": "xml-minifier",
+        "component": "XmlMinifier",
+        "icon": "MinifyIcon",
+        "short_desc": "Trim down your XML code for optimal performance",
+        "meta_desc": "Effortlessly reduce XML file sizes and enhance page load speed with our XML Minifier. Trim the excess and boost performance without compromising data integrity. Optimize your code for a faster, more efficient development experience.",
+        "active": true
+    },
+    {
+        "label": "XML Beautifier",
+        "link": "xml-beautifier",
+        "component": "XmlBeautifier",
+        "icon": "BeautifyIcon",
+        "short_desc": "Tidy up your XML code for clarity and readability",
+        "meta_desc": "Transform tangled XML into clean, well-organized code with our XML Beautifier.",
+        "active": true
+    },
+    {
+        "label": "XML to JSON",
+        "link": "xml-to-json",
+        "component": "XmlToJson",
+        "icon": "ConvertIcon",
+        "short_desc": "Convert XML to JSON and simplify data compatibility",
+        "meta_desc": "Easily convert XML to JSON with our online tool. Streamline data interchange and compatibility for a more efficient development experience.",
+        "active": true
+    },
+    {
+        "label": "JSON to XML",
+        "link": "json-to-xml",
+        "component": "JsonToXml",
+        "icon": "ConvertIcon",
+        "short_desc": "Convert JSON to XML and simplify data compatibility",
+        "meta_desc": "Easily convert JSON to XML with our online tool. Streamline data interchange and compatibility for a more efficient development experience.",
         "active": true
     },
     {
         "label": "Base64 Encoder/Decoder",
         "link": "base64-encode-decode",
         "component": "Base64Transformer",
+        "icon": "TransformIcon",
         "short_desc": "Encode and decode data with this versatile utility",
         "meta_desc": "Effortlessly Encode and Decode Data with Our Base64 Encoder/Decoder Tool. Secure and Efficient Data Conversion for Developers.",
         "active": true
@@ -75,6 +120,7 @@
         "label": "JWT Decoder",
         "link": "jwt-decoder",
         "component": "JwtDecoder",
+        "icon": "JwtIcon",
         "short_desc": "Decode JSON Web Tokens to inspect and verify their content",
         "meta_desc": "Decode JWT Tokens with Our JWT Decoder Tool",
         "active": true
@@ -83,6 +129,7 @@
         "label": "Lorem Ipsum Generator",
         "link": "lorem-ipsum-generator",
         "component": "LoremIpsumGenerator",
+        "icon": "LoremIcon",
         "short_desc": "Generate placeholder text for content drafting and design prototyping",
         "meta_desc": "Create Realistic Placeholder Text with Our Lorem Ipsum Generator. Simplify Content Drafting and Design Prototyping for Web and Print Projects.",
         "active": true

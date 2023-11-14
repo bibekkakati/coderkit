@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
 import useKitStorage from "../../hooks/useKitStorage.js";
+import jsonToXml from "../../utils/jsonToXml.js";
 import CopyBtn from "../CopyBtn.jsx";
 import Output from "../Output.jsx";
 import Select from "../Select.jsx";
 import TextBox from "../TextBox.jsx";
 
-const SampleInput =
-    '{"kit": "JSON Formatter", "app": "CoderKit", "version": 1, "isLive": true}';
 const IndentingSpaceOptions = [
     { value: 2, label: "2 spaces" },
     { value: 3, label: "3 spaces" },
     { value: 4, label: "4 spaces" },
 ];
 
-export default function JSONFormatter() {
+export default function XmlToJson() {
     const kitStorage = useKitStorage();
     const localData = {
         space: Number(kitStorage.get("space")),
@@ -23,7 +22,7 @@ export default function JSONFormatter() {
     const [indentingSpace, setIndentingSpace] = useState(
         localData.space || IndentingSpaceOptions[0].value
     );
-    const [inputV, setInputV] = useState(localData.inputV || SampleInput);
+    const [inputV, setInputV] = useState(localData.inputV || "");
     const [output, setOutput] = useState({
         value: "",
         error: "",
@@ -31,7 +30,7 @@ export default function JSONFormatter() {
 
     useEffect(() => {
         try {
-            const iv = inputV.trim(); //?.replaceAll("'", '"');
+            const iv = inputV.trim();
 
             if (!iv.length) {
                 return setOutput({
@@ -53,8 +52,10 @@ export default function JSONFormatter() {
                 );
             }
 
+            ov = jsonToXml(ov, indentingSpace);
+
             return setOutput({
-                value: JSON.stringify(ov, null, indentingSpace),
+                value: ov,
                 error: "",
             });
         } catch (error) {
@@ -91,6 +92,7 @@ export default function JSONFormatter() {
                     value={output.value}
                     error={output.error}
                     prettify={true}
+                    language="xml"
                     actions={
                         <>
                             <Select

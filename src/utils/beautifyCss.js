@@ -1,6 +1,6 @@
 import { css_beautify } from "js-beautify";
 
-export default function beautifyCss(code, indentingSpace) {
+export default function beautifyCss(code, indentingSpace = 2) {
     const r = css_beautify(code, {
         indent_char: " ",
         selector_separator_newline: true,

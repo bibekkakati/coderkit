@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
-import useKitStorage from "../../hooks/useKitStorage.js";
-import CopyBtn from "../CopyBtn.jsx";
-import Output from "../Output.jsx";
-import Select from "../Select.jsx";
-import TextBox from "../TextBox.jsx";
+import useKitStorage from "../../hooks/useKitStorage";
+import beautifyHtml from "../../utils/beautifyHtml";
+import CopyBtn from "../CopyBtn";
+import Output from "../Output";
+import Select from "../Select";
+import TextBox from "../TextBox";
 
-const SampleInput =
-    '{"kit": "JSON Formatter", "app": "CoderKit", "version": 1, "isLive": true}';
 const IndentingSpaceOptions = [
     { value: 2, label: "2 spaces" },
     { value: 3, label: "3 spaces" },
     { value: 4, label: "4 spaces" },
 ];
 
-export default function JSONFormatter() {
+export default function XmlBeautifier() {
     const kitStorage = useKitStorage();
     const localData = {
         space: Number(kitStorage.get("space")),
@@ -23,7 +22,7 @@ export default function JSONFormatter() {
     const [indentingSpace, setIndentingSpace] = useState(
         localData.space || IndentingSpaceOptions[0].value
     );
-    const [inputV, setInputV] = useState(localData.inputV || SampleInput);
+    const [inputV, setInputV] = useState(localData.inputV || "");
     const [output, setOutput] = useState({
         value: "",
         error: "",
@@ -31,7 +30,7 @@ export default function JSONFormatter() {
 
     useEffect(() => {
         try {
-            const iv = inputV.trim(); //?.replaceAll("'", '"');
+            const iv = inputV.trim();
 
             if (!iv.length) {
                 return setOutput({
@@ -40,21 +39,10 @@ export default function JSONFormatter() {
                 });
             }
 
-            let ov = null;
-
-            try {
-                ov = JSON.parse(iv);
-            } catch (error) {
-                ov = JSON.parse(
-                    iv.replace(
-                        /(['"])?([a-zA-Z0-9_]+)(['"])?:([^/])/g,
-                        '"$2":$4'
-                    )
-                );
-            }
+            const ov = beautifyHtml(iv, indentingSpace);
 
             return setOutput({
-                value: JSON.stringify(ov, null, indentingSpace),
+                value: ov,
                 error: "",
             });
         } catch (error) {
@@ -72,7 +60,7 @@ export default function JSONFormatter() {
     };
 
     const onInput = (e) => {
-        const iv = e.target.value;
+        const iv = e.target.value || "";
         setInputV(iv);
         kitStorage.set(iv, "inputV");
     };
@@ -83,7 +71,7 @@ export default function JSONFormatter() {
                 <TextBox
                     value={inputV}
                     onChange={onInput}
-                    placeholder="Paste your JSON object"
+                    placeholder="Paste your code"
                 />
             </div>
             <div className="form-control p-4 h-1/2 w-full md:h-full md:w-1/2">
@@ -91,6 +79,7 @@ export default function JSONFormatter() {
                     value={output.value}
                     error={output.error}
                     prettify={true}
+                    language="xml"
                     actions={
                         <>
                             <Select

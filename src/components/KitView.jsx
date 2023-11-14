@@ -3,19 +3,11 @@ import { Suspense, lazy } from "react";
 import KitsList from "../constants/kitslist.json";
 import ScreenLoader from "./ScreenLoader";
 
-const kitcomponents = {
-    JSONFormatter: lazy(() => import("./kits/JSONFormatter")),
-    TextCaseConverter: lazy(() => import("./kits/TextCaseConverter")),
-    Base64Transformer: lazy(() => import("./kits/Base64Transformer")),
-    LoremIpsumGenerator: lazy(() => import("./kits/LoremIpsumGenerator")),
-    JavascriptMinifier: lazy(() => import("./kits/JavascriptMinifier")),
-    JavascriptBeautifier: lazy(() => import("./kits/JavascriptBeautifier")),
-    CssBeautifier: lazy(() => import("./kits/CssBeautifier")),
-    CssMinifier: lazy(() => import("./kits/CssMinifier")),
-    HtmlMinifier: lazy(() => import("./kits/HtmlMinifier")),
-    HtmlBeautifier: lazy(() => import("./kits/HtmlBeautifier")),
-    JwtDecoder: lazy(() => import("./kits/JwtDecoder")),
-};
+const kitcomponents = {};
+for (let i = 0; i < KitsList.length; i++) {
+    const { component } = KitsList[i];
+    kitcomponents[component] = lazy(() => import(`./kits/${component}.jsx`)); // extension is required in dynamic imports
+}
 
 export default function KitView({ kitname }) {
     const kititem = KitsList.find(
