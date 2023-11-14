@@ -2,10 +2,14 @@ import fs from "fs";
 import jsdom from "jsdom";
 import Kits from "../src/constants/kitslist.json" assert { type: "json" };
 
-(function () {
+function processMetaTags() {
     const html = fs.readFileSync("./index.html").toString();
     const dom = new jsdom.JSDOM(html);
     const document = dom.window.document;
+
+    // Inject SEO tags in index.html
+    injectSeoTags(document, Kits);
+    fs.writeFileSync("./index.html", dom.serialize());
 
     const dir = "./app";
     if (!fs.existsSync(dir)) {
@@ -36,8 +40,68 @@ import Kits from "../src/constants/kitslist.json" assert { type: "json" };
             }
         }
 
+        injectSeoTags(document, Kits);
+
         const outputHtml = dom.serialize();
         fs.writeFileSync(`${dir}/${link}.html`, outputHtml);
         console.log(`${dir}/${link}.html generated`);
     }
+}
+
+function injectSeoTags(document, links) {
+    // Clean existing seo div
+    document.getElementById("seo").remove();
+
+    // Create seo div
+    const seoDiv = document.createElement("div");
+    seoDiv.id = "seo";
+    seoDiv.classList.add("hidden");
+    seoDiv.hidden = true;
+
+    // Create a style element
+    // const styleElement = document.createElement("style");
+    // styleElement.type = "text/css";
+
+    // Define the CSS rules
+    // const cssRules = "#seo, #seo a, #seo a:hover { color: transparent; }";
+
+    // Check for browser support of the styleSheet property
+    // if (styleElement.styleSheet) {
+    //     styleElement.styleSheet.cssText = cssRules; // For IE8 and earlier
+    // } else {
+    //     styleElement.appendChild(document.createTextNode(cssRules)); // For modern browsers
+    // }
+
+    // Create h1 element
+    const h1Element = document.createElement("h1");
+    h1Element.textContent = document.title;
+
+    // Create h2 element
+    const h2Element = document.createElement("h2");
+    h2Element.textContent = document.querySelector(
+        'meta[name="description"'
+    ).content;
+
+    // Append elements to the div
+    // seoDiv.appendChild(styleElement);
+    seoDiv.appendChild(h1Element);
+    seoDiv.appendChild(h2Element);
+
+    links?.forEach(({ link, label }) => {
+        const l = document.createElement("a");
+        l.href = `/app/${link}`;
+        l.alt = label;
+        l.appendChild(document.createTextNode(label));
+        seoDiv.appendChild(l);
+    });
+
+    // Get the first child element in the body
+    const firstChild = document.body.firstChild;
+
+    // Insert the "seo" div before the first child
+    document.body.insertBefore(seoDiv, firstChild);
+}
+
+(function () {
+    processMetaTags();
 })();
