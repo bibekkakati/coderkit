@@ -9,7 +9,7 @@ export default function useDocumentTitle(
     const defaultTitle = useRef(document.title);
 
     useEffect(() => {
-        document.title = `CoderKit - ${title}`;
+        document.title = title;
     }, [title]);
 
     useEffect(() => {

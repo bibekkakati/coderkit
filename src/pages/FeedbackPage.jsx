@@ -2,7 +2,7 @@ import ScreenLoader from "../components/ScreenLoader";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function Feedback() {
-    useDocumentTitle("Feedback");
+    useDocumentTitle("Feedback Form");
 
     return (
         <iframe

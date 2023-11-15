@@ -33,7 +33,7 @@ export default function AppPage() {
 
 const AppView = ({ kitdata }) => {
     const { label, link: kitname, short_desc, meta_desc } = kitdata;
-    useDocumentTitle(`${label} | ${short_desc}`, meta_desc);
+    useDocumentTitle(`${label} - ${short_desc}`, meta_desc);
 
     const navref = useRef(null);
     const [screenSize, setScreenSize] = useState({

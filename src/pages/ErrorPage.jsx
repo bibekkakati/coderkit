@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function ErrorPage() {
-    useDocumentTitle("404");
+    useDocumentTitle("Page not found");
 
     return (
         <div className="hero min-h-screen bg-base-200">
