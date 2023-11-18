@@ -1,11 +1,11 @@
 [
     {
-        "label": "JSON Formatter/Validator",
+        "label": "JSON Formatter",
         "link": "json-formatter-validator",
         "component": "JSONFormatter",
         "icon": "JsonIcon",
         "short_desc": "Tame unruly JSON data with ease, ensuring readability and error-free code",
-        "meta_desc": "Refine Your JSON Data with Our JSON Formatter/Validator Tool. Ensure Well-Structured and Error-Free Data for Seamless Integration.",
+        "meta_desc": "Refine Your JSON Data with Our JSON Formatter Tool. Ensure Well-Structured and Error-Free Data for Seamless Integration.",
         "active": true
     },
     {
