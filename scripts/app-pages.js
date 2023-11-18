@@ -4,8 +4,16 @@ import Kits from "../src/constants/kitslist.json" assert { type: "json" };
 
 function processMetaTags() {
     const html = fs.readFileSync("./index.html").toString();
-    const dom = new jsdom.JSDOM(html);
+    const dom = new jsdom.JSDOM(html, { contentType: "text/html" });
     const document = dom.window.document;
+
+    const keywords = fs
+        .readFileSync("./scripts/keywords.txt")
+        .toString()
+        .split("\n");
+    document
+        .querySelector('meta[name="keywords"]')
+        .setAttribute("content", keywords.join(","));
 
     // Inject SEO tags in index.html
     injectSeoTags(document, Kits);
@@ -58,20 +66,6 @@ function injectSeoTags(document, links) {
     seoDiv.classList.add("hidden");
     seoDiv.hidden = true;
 
-    // Create a style element
-    // const styleElement = document.createElement("style");
-    // styleElement.type = "text/css";
-
-    // Define the CSS rules
-    // const cssRules = "#seo, #seo a, #seo a:hover { color: transparent; }";
-
-    // Check for browser support of the styleSheet property
-    // if (styleElement.styleSheet) {
-    //     styleElement.styleSheet.cssText = cssRules; // For IE8 and earlier
-    // } else {
-    //     styleElement.appendChild(document.createTextNode(cssRules)); // For modern browsers
-    // }
-
     // Create h1 element
     const h1Element = document.createElement("h1");
     h1Element.textContent = document.title;
@@ -83,7 +77,6 @@ function injectSeoTags(document, links) {
     ).content;
 
     // Append elements to the div
-    // seoDiv.appendChild(styleElement);
     seoDiv.appendChild(h1Element);
     seoDiv.appendChild(h2Element);
 
