@@ -9,26 +9,26 @@ export default function minifyHtml(html) {
         }
     );
 
-    const minfifyJS = (js) => {
-        // Remove JavaScript comments
-        js = js.replace(/\/\/[^\n]*|\/\*[\s\S]*?\*\//g, "");
+    // const minfifyJS = (js) => {
+    //     // Remove JavaScript comments
+    //     js = js.replace(/\/\/[^\n]*|\/\*[\s\S]*?\*\//g, "");
 
-        // Remove line breaks and extra whitespace
-        js = js.replace(/\n/g, "");
-        js = js.replace(/\r/g, "");
-        js = js.replace(/\t/g, "");
-        js = js.replace(/\s+/g, " ");
+    //     // Remove line breaks and extra whitespace
+    //     js = js.replace(/\n/g, "");
+    //     js = js.replace(/\r/g, "");
+    //     js = js.replace(/\t/g, "");
+    //     js = js.replace(/\s+/g, " ");
 
-        return js;
-    };
+    //     return js;
+    // };
 
     // Minify embedded JavaScript
-    html = html.replace(
-        /<script[^>]*>([\s\S]*?)<\/script>/g,
-        function (match, group) {
-            return "<script>" + minfifyJS(group) + "</script>";
-        }
-    );
+    // html = html.replace(
+    //     /<script[^>]*>([\s\S]*?)<\/script>/g,
+    //     function (match, group) {
+    //         return "<script>" + minfifyJS(group) + "</script>";
+    //     }
+    // );
 
     // Remove HTML comments
     html = html.replace(/<!--([\s\S]*?)-->/g, "");

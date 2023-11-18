@@ -17,7 +17,7 @@ function processMetaTags() {
 
     // Inject SEO tags in index.html
     injectSeoTags(document, Kits);
-    fs.writeFileSync("./index.html", dom.serialize());
+    fs.writeFileSync("./index.html", dom.serialize().replaceAll("\n\n", ""));
 
     const dir = "./app";
     if (!fs.existsSync(dir)) {
@@ -50,7 +50,7 @@ function processMetaTags() {
 
         injectSeoTags(document, Kits);
 
-        const outputHtml = dom.serialize();
+        const outputHtml = dom.serialize().replaceAll("\n\n", "");
         fs.writeFileSync(`${dir}/${link}.html`, outputHtml);
         console.log(`${dir}/${link}.html generated`);
     }
