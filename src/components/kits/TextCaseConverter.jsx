@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import useKitStorage from "../../hooks/useKitStorage";
 import textCaseConverters from "../../utils/textCaseConverters";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
 import Select from "../Select";
 import TextBox from "../TextBox";
-import useKitStorage from "../../hooks/useKitStorage";
 
 const sampleInput = "THE QUICK brown fox";
 const caseOptions = [
@@ -66,37 +66,21 @@ export default function TextCaseConverter() {
         localData.textCase || caseOptions[0].value
     );
     const [inputV, setInputV] = useState(localData.inputV || sampleInput);
-    const [output, setOutput] = useState({
-        value: "",
-        error: "",
-    });
 
-    useEffect(() => {
-        try {
-            const iv = inputV.trim();
+    let value = "";
+    let error = "";
 
-            if (!iv.length) {
-                return setOutput({
-                    value: "",
-                    error: "",
-                });
-            }
+    try {
+        const iv = inputV.trim();
 
-            const ov = caseOptions
+        if (iv.length) {
+            value = caseOptions
                 .find(({ value }) => value === textCase)
                 .convert(iv);
-
-            return setOutput({
-                value: ov,
-                error: "",
-            });
-        } catch (error) {
-            return setOutput({
-                value: "",
-                error: error.message,
-            });
         }
-    }, [inputV, textCase]);
+    } catch (e) {
+        error = e.message;
+    }
 
     const updateTextCase = (e) => {
         const tc = e.target.value;
@@ -121,8 +105,8 @@ export default function TextCaseConverter() {
             </div>
             <div className="form-control p-4 h-1/2 w-full md:h-full md:w-1/2">
                 <Output
-                    value={output.value}
-                    error={output.error}
+                    value={value}
+                    error={error}
                     prettify={true}
                     wrap={true}
                     actions={
@@ -134,7 +118,7 @@ export default function TextCaseConverter() {
                                     ({ value, label }) => ({ value, label })
                                 )}
                             />
-                            <CopyBtn value={output.value} />
+                            <CopyBtn value={value} />
                         </>
                     }
                 />

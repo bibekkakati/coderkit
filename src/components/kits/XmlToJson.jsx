@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useKitStorage from "../../hooks/useKitStorage.js";
 import xmlToJson from "../../utils/xmlToJson.js";
 import CheckBox from "../CheckBox.jsx";
@@ -71,22 +71,14 @@ export default function XmlToJson() {
         localData.space || IndentingSpaceOptions[0].value
     );
     const [inputV, setInputV] = useState(localData.inputV || "");
-    const [output, setOutput] = useState({
-        value: "",
-        error: "",
-    });
 
-    useEffect(() => {
-        try {
-            const iv = inputV.trim();
+    let value = "";
+    let error = "";
 
-            if (!iv.length) {
-                return setOutput({
-                    value: "",
-                    error: "",
-                });
-            }
+    try {
+        const iv = inputV.trim();
 
+        if (iv.length) {
             const parseOptions = {};
             for (let i = 0; i < options.length; i++) {
                 const { key, checked } = options[i];
@@ -101,18 +93,11 @@ export default function XmlToJson() {
                 parseOptions[key] = checked;
             }
             const ov = xmlToJson(iv, parseOptions);
-
-            return setOutput({
-                value: JSON.stringify(ov, null, indentingSpace),
-                error: "",
-            });
-        } catch (error) {
-            return setOutput({
-                value: "",
-                error: error.message,
-            });
+            value = JSON.stringify(ov, null, indentingSpace);
         }
-    }, [inputV, indentingSpace, options]);
+    } catch (e) {
+        error = e.message;
+    }
 
     const updateOptions = (e, index) => {
         const _options = [...options];
@@ -145,8 +130,8 @@ export default function XmlToJson() {
             </div>
             <div className="form-control p-4 h-1/2 w-full md:h-full md:w-1/2">
                 <Output
-                    value={output.value}
-                    error={output.error}
+                    value={value}
+                    error={error}
                     prettify={true}
                     actions={
                         <>
@@ -182,7 +167,7 @@ export default function XmlToJson() {
                                 onChange={updateIndentingSpace}
                                 options={IndentingSpaceOptions}
                             />
-                            <CopyBtn value={output.value} />
+                            <CopyBtn value={value} />
                         </>
                     }
                 />

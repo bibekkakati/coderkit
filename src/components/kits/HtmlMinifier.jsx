@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useKitStorage from "../../hooks/useKitStorage";
 import minifyHtml from "../../utils/minifyHtml";
 import CopyBtn from "../CopyBtn";
@@ -12,35 +12,18 @@ export default function HtmlMinifier() {
     };
 
     const [inputV, setInputV] = useState(localData.inputV || "");
-    const [output, setOutput] = useState({
-        value: "",
-        error: "",
-    });
 
-    useEffect(() => {
-        try {
-            const iv = inputV.trim();
+    let value = "";
+    let error = "";
 
-            if (!iv.length) {
-                return setOutput({
-                    value: "",
-                    error: "",
-                });
-            }
-
-            const ov = minifyHtml(iv);
-
-            return setOutput({
-                value: ov,
-                error: "",
-            });
-        } catch (error) {
-            return setOutput({
-                value: "",
-                error: error.message,
-            });
+    try {
+        const iv = inputV.trim();
+        if (iv.length) {
+            value = minifyHtml(iv);
         }
-    }, [inputV]);
+    } catch (e) {
+        error = e.message;
+    }
 
     const onInput = (e) => {
         const iv = e.target.value || "";
@@ -59,14 +42,14 @@ export default function HtmlMinifier() {
             </div>
             <div className="form-control p-4 h-1/2 w-full md:h-full md:w-1/2">
                 <Output
-                    value={output.value}
-                    error={output.error}
+                    value={value}
+                    error={error}
                     prettify={true}
                     language="xml"
                     wrap={true}
                     actions={
                         <>
-                            <CopyBtn value={output.value} />
+                            <CopyBtn value={value} />
                         </>
                     }
                 />

@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import useKitStorage from "../../hooks/useKitStorage";
 import decodeJwt from "../../utils/decodeJwt";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
 import TextBox from "../TextBox";
-import useKitStorage from "../../hooks/useKitStorage";
 
 const sample =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
@@ -15,39 +15,22 @@ export default function JwtDecoder() {
     };
 
     const [inputV, setInputV] = useState(localData.inputV || sample);
-    const [output, setOutput] = useState({
-        header: "",
-        payload: "",
-        error: "",
-    });
 
-    useEffect(() => {
-        try {
-            const iv = inputV.trim();
+    let header = "";
+    let payload = "";
+    let error = "";
 
-            if (!iv.length) {
-                return setOutput({
-                    header: "",
-                    payload: "",
-                    error: "",
-                });
-            }
+    try {
+        const iv = inputV.trim();
 
-            const { header, payload } = decodeJwt(iv);
-
-            return setOutput({
-                header: JSON.stringify(header, null, 2),
-                payload: JSON.stringify(payload, null, 2),
-                error: "",
-            });
-        } catch (error) {
-            return setOutput({
-                header: "",
-                payload: "",
-                error: error.message,
-            });
+        if (iv.length) {
+            const d = decodeJwt(iv);
+            header = JSON.stringify(d.header, null, 2);
+            payload = JSON.stringify(d.payload, null, 2);
         }
-    }, [inputV]);
+    } catch (e) {
+        error = e.message;
+    }
 
     const onInput = (e) => {
         const iv = e.target.value || "";
@@ -67,23 +50,23 @@ export default function JwtDecoder() {
             <div className="form-control p-4 h-1/2 w-full md:h-full md:w-1/2">
                 <Output
                     label="Header"
-                    value={output.header}
-                    error={output.error}
+                    value={header}
+                    error={error}
                     prettify={true}
                     actions={
                         <>
-                            <CopyBtn value={output.header} />
+                            <CopyBtn value={header} />
                         </>
                     }
                 />
                 <Output
                     label="Payload"
-                    value={output.payload}
-                    error={output.error}
+                    value={payload}
+                    error={error}
                     prettify={true}
                     actions={
                         <>
-                            <CopyBtn value={output.payload} />
+                            <CopyBtn value={payload} />
                         </>
                     }
                 />

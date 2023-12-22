@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useKitStorage from "../../hooks/useKitStorage";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
@@ -19,43 +19,26 @@ export default function Base64Transformer() {
 
     const [mode, setMode] = useState(localData.mode || modes[0].value);
     const [inputV, setInputV] = useState(localData.inputV || "");
-    const [output, setOutput] = useState({
-        value: "",
-        error: "",
-    });
 
-    useEffect(() => {
-        try {
-            const iv = inputV.trim();
+    let value = "";
+    let error = "";
 
-            if (!iv.length) {
-                return setOutput({
-                    value: "",
-                    error: "",
-                });
-            }
+    try {
+        const iv = inputV.trim();
 
-            let ov = "";
+        if (iv.length) {
             if (mode == "encode") {
-                ov = window.btoa(iv);
+                value = window.btoa(iv);
             } else {
-                ov = window.atob(iv);
+                value = window.atob(iv);
             }
-
-            return setOutput({
-                value: ov,
-                error: "",
-            });
-        } catch (error) {
-            return setOutput({
-                value: "",
-                error:
-                    mode == "encode"
-                        ? `String is not valid for encoding`
-                        : `String is not encoded correctly`,
-            });
         }
-    }, [inputV, mode]);
+    } catch (e) {
+        error =
+            mode == "encode"
+                ? `String is not valid for encoding`
+                : `String is not encoded correctly`;
+    }
 
     const onModeChange = (e) => {
         const mode = e.target.value;
@@ -89,13 +72,13 @@ export default function Base64Transformer() {
             </div>
             <div className="form-control p-4 h-1/2 w-full md:h-full md:w-1/2">
                 <Output
-                    value={output.value}
-                    error={output.error}
+                    value={value}
+                    error={error}
                     prettify={true}
                     wrap={true}
                     actions={
                         <>
-                            <CopyBtn value={output.value} />
+                            <CopyBtn value={value} />
                         </>
                     }
                 />

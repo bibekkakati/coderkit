@@ -8,11 +8,11 @@ export default function useKitStorage() {
     return {
         get: (identifier = "") => {
             const key = kitname ? `${kitname}:${identifier}` : identifier;
-            return window.localStorage.getItem(key) || "";
+            return window?.localStorage?.getItem(key) || "";
         },
         set: (str, identifier = "") => {
             const key = kitname ? `${kitname}:${identifier}` : identifier;
-            return window.localStorage.setItem(key, str);
+            return window?.localStorage?.setItem(key, str);
         },
     };
 }

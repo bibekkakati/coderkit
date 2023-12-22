@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import generateLoremIpsum from "../../utils/generateLoremIpsum";
 import CopyBtn from "../CopyBtn";
 import Output from "../Output";
@@ -8,26 +8,15 @@ const maxWordsCount = 10000;
 
 export default function LoremIpsumGenerator() {
     const [wordsCount, setWordsCount] = useState(defaultWordsCOunt);
-    const [output, setOutput] = useState({
-        value: "",
-        error: "",
-    });
 
-    useEffect(() => {
-        try {
-            const ov = wordsCount ? generateLoremIpsum(wordsCount) : "";
+    let value = "";
+    let error = "";
 
-            return setOutput({
-                value: ov,
-                error: "",
-            });
-        } catch (error) {
-            return setOutput({
-                value: "",
-                error: "Unknown error",
-            });
-        }
-    }, [wordsCount]);
+    try {
+        value = wordsCount ? generateLoremIpsum(wordsCount) : "";
+    } catch (e) {
+        error = "Unkown error";
+    }
 
     const onCountChange = (e) => {
         const v = e.target.value;
@@ -46,8 +35,8 @@ export default function LoremIpsumGenerator() {
         <div className="flex flex-col md:flex-row h-full w-full ">
             <div className="form-control p-4 h-full w-full">
                 <Output
-                    value={output.value}
-                    error={output.error}
+                    value={value}
+                    error={error}
                     wrap={true}
                     actions={
                         <>
@@ -65,7 +54,7 @@ export default function LoremIpsumGenerator() {
                                     max={maxWordsCount}
                                 />
                             </span>
-                            <CopyBtn value={output.value} />
+                            <CopyBtn value={value} />
                         </>
                     }
                 />

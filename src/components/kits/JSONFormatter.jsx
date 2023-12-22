@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import useKitStorage from "../../hooks/useKitStorage.js";
-import CopyBtn from "../CopyBtn.jsx";
-import Output from "../Output.jsx";
-import Select from "../Select.jsx";
-import TextBox from "../TextBox.jsx";
+import { useState } from "react";
+import useKitStorage from "../../hooks/useKitStorage";
+import CopyBtn from "../CopyBtn";
+import Output from "../Output";
+import Select from "../Select";
+import TextBox from "../TextBox";
 
 const SampleInput =
     '{"kit": "JSON Formatter", "app": "CoderKit", "version": 1, "isLive": true}';
@@ -24,22 +24,14 @@ export default function JSONFormatter() {
         localData.space || IndentingSpaceOptions[0].value
     );
     const [inputV, setInputV] = useState(localData.inputV || SampleInput);
-    const [output, setOutput] = useState({
-        value: "",
-        error: "",
-    });
 
-    useEffect(() => {
-        try {
-            const iv = inputV.trim(); //?.replaceAll("'", '"');
+    let value = "";
+    let error = "";
 
-            if (!iv.length) {
-                return setOutput({
-                    value: "",
-                    error: "",
-                });
-            }
+    try {
+        const iv = inputV.trim(); //?.replaceAll("'", '"');
 
+        if (iv.length) {
             let ov = null;
 
             try {
@@ -53,17 +45,11 @@ export default function JSONFormatter() {
                 );
             }
 
-            return setOutput({
-                value: JSON.stringify(ov, null, indentingSpace),
-                error: "",
-            });
-        } catch (error) {
-            return setOutput({
-                value: "",
-                error: error.message,
-            });
+            value = JSON.stringify(ov, null, indentingSpace);
         }
-    }, [inputV, indentingSpace]);
+    } catch (e) {
+        error = e.message;
+    }
 
     const updateIndentingSpace = (e) => {
         const space = Number(e.target.value);
@@ -88,8 +74,8 @@ export default function JSONFormatter() {
             </div>
             <div className="form-control p-4 h-1/2 w-full md:h-full md:w-1/2">
                 <Output
-                    value={output.value}
-                    error={output.error}
+                    value={value}
+                    error={error}
                     prettify={true}
                     actions={
                         <>
@@ -98,7 +84,7 @@ export default function JSONFormatter() {
                                 onChange={updateIndentingSpace}
                                 options={IndentingSpaceOptions}
                             />
-                            <CopyBtn value={output.value} />
+                            <CopyBtn value={value} />
                         </>
                     }
                 />

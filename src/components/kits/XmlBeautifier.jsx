@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useKitStorage from "../../hooks/useKitStorage";
 import beautifyHtml from "../../utils/beautifyHtml";
 import CopyBtn from "../CopyBtn";
@@ -23,35 +23,18 @@ export default function XmlBeautifier() {
         localData.space || IndentingSpaceOptions[0].value
     );
     const [inputV, setInputV] = useState(localData.inputV || "");
-    const [output, setOutput] = useState({
-        value: "",
-        error: "",
-    });
 
-    useEffect(() => {
-        try {
-            const iv = inputV.trim();
+    let value = "";
+    let error = "";
 
-            if (!iv.length) {
-                return setOutput({
-                    value: "",
-                    error: "",
-                });
-            }
-
-            const ov = beautifyHtml(iv, indentingSpace);
-
-            return setOutput({
-                value: ov,
-                error: "",
-            });
-        } catch (error) {
-            return setOutput({
-                value: "",
-                error: error.message,
-            });
+    try {
+        const iv = inputV.trim();
+        if (iv.length) {
+            value = beautifyHtml(iv, indentingSpace);
         }
-    }, [inputV, indentingSpace]);
+    } catch (e) {
+        error = e.message;
+    }
 
     const updateIndentingSpace = (e) => {
         const space = Number(e.target.value);
@@ -76,8 +59,8 @@ export default function XmlBeautifier() {
             </div>
             <div className="form-control p-4 h-1/2 w-full md:h-full md:w-1/2">
                 <Output
-                    value={output.value}
-                    error={output.error}
+                    value={value}
+                    error={error}
                     prettify={true}
                     language="xml"
                     actions={
@@ -87,7 +70,7 @@ export default function XmlBeautifier() {
                                 onChange={updateIndentingSpace}
                                 options={IndentingSpaceOptions}
                             />
-                            <CopyBtn value={output.value} />
+                            <CopyBtn value={value} />
                         </>
                     }
                 />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useKitStorage from "../../hooks/useKitStorage.js";
 import jsonToXml from "../../utils/jsonToXml.js";
 import CopyBtn from "../CopyBtn.jsx";
@@ -23,22 +23,14 @@ export default function XmlToJson() {
         localData.space || IndentingSpaceOptions[0].value
     );
     const [inputV, setInputV] = useState(localData.inputV || "");
-    const [output, setOutput] = useState({
-        value: "",
-        error: "",
-    });
 
-    useEffect(() => {
-        try {
-            const iv = inputV.trim();
+    let value = "";
+    let error = "";
 
-            if (!iv.length) {
-                return setOutput({
-                    value: "",
-                    error: "",
-                });
-            }
+    try {
+        const iv = inputV.trim();
 
+        if (iv.length) {
             let ov = null;
 
             try {
@@ -52,19 +44,11 @@ export default function XmlToJson() {
                 );
             }
 
-            ov = jsonToXml(ov, indentingSpace);
-
-            return setOutput({
-                value: ov,
-                error: "",
-            });
-        } catch (error) {
-            return setOutput({
-                value: "",
-                error: error.message,
-            });
+            value = jsonToXml(ov, indentingSpace);
         }
-    }, [inputV, indentingSpace]);
+    } catch (e) {
+        error = e.message;
+    }
 
     const updateIndentingSpace = (e) => {
         const space = Number(e.target.value);
@@ -89,8 +73,8 @@ export default function XmlToJson() {
             </div>
             <div className="form-control p-4 h-1/2 w-full md:h-full md:w-1/2">
                 <Output
-                    value={output.value}
-                    error={output.error}
+                    value={value}
+                    error={error}
                     prettify={true}
                     language="xml"
                     actions={
@@ -100,7 +84,7 @@ export default function XmlToJson() {
                                 onChange={updateIndentingSpace}
                                 options={IndentingSpaceOptions}
                             />
-                            <CopyBtn value={output.value} />
+                            <CopyBtn value={value} />
                         </>
                     }
                 />
