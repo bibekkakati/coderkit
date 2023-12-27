@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 export default function Logo({ showLogoText = true }) {
     return (
         <div className="w-fit indicator ml-3">
-            {showLogoText ? (
+            {/* {showLogoText ? (
                 <span className="indicator-item indicator-middle badge badge-xs badge-neutral rounded font-bold mr-[-24px]">
                     beta
                 </span>
-            ) : null}
+            ) : null} */}
             <Link to="/" aria-label="Home">
                 <div className="inline-flex items-center">
                     <img

@@ -68,7 +68,7 @@ export default function Sidebar({ kitname }) {
                     Feedback
                 </Link>
             </button>
-            <button className="btn btn-xs bg-ck-secondary hover:bg-ck-secondary rounded fixed text-black pb-1 bottom-[-3px] left-[110px]">
+            {/* <button className="btn btn-xs bg-ck-secondary hover:bg-ck-secondary rounded fixed text-black pb-1 bottom-[-3px] left-[110px]">
                 <Link
                     to="https://www.buymeacoffee.com/bibekkakati"
                     target="__blank"
@@ -76,7 +76,7 @@ export default function Sidebar({ kitname }) {
                 >
                     Donate
                 </Link>
-            </button>
+            </button> */}
         </div>
     );
 }
