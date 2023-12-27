@@ -49,6 +49,16 @@ const Hero = () => (
                 <Link to="/app" aria-label="View Tools">
                     <button className="btn btn-outline">View Tools</button>
                 </Link>
+                <Link
+                    to="https://www.producthunt.com/posts/coderkit?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-coderkit"
+                    target="_blank"
+                >
+                    <img
+                        src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=431706&theme=light"
+                        alt="CoderKit - Unleash Your Coding Superpowers | Product Hunt"
+                        className="btn"
+                    />
+                </Link>
             </div>
         </div>
         <div className="flex flex-col justify-center col-span-7 lg:mt-0 md:mt-10 sm:mt-10 mt-10">
