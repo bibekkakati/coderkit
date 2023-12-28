@@ -102,7 +102,7 @@ const AppView = ({ kitdata }) => {
     }
 
     return (
-        <div className="flex flex-row divide-x divide-ck-primary">
+        <div className="flex flex-row">
             <div ref={navref} className="w-fit">
                 <Suspense>
                     <Sidebar kitname={kitname} />

@@ -26,7 +26,7 @@ export default function CopyBtn({ value }) {
 
     return (
         <div
-            className={`tooltip tooltip-bottom tooltip-${tooltip.color}`}
+            className={`tooltip tooltip-bottom tooltip-${tooltip.color} rounded btn-xs`}
             data-tip={tooltip.text}
         >
             <button

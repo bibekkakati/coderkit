@@ -56,13 +56,13 @@ const Hero = () => (
                     <img
                         src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=431706&theme=light"
                         alt="CoderKit - Unleash Your Coding Superpowers | Product Hunt"
-                        className="btn"
+                        className="btn border-none"
                     />
                 </Link>
             </div>
         </div>
         <div className="flex flex-col justify-center col-span-7 lg:mt-0 md:mt-10 sm:mt-10 mt-10">
-            <div className="mockup-browser border h-fit rounded-xl">
+            <div className="mockup-browser border border-stone-700 h-fit rounded-xl">
                 <img className="w-full" src="/preview.png" alt="Preview" />
             </div>
         </div>

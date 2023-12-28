@@ -22,11 +22,12 @@ export default function TextBox({
                 </div>
             </div>
             <textarea
-                className="flex-1 textarea h-full w-full rounded resize-none"
+                className="flex-1 textarea h-full w-full rounded resize-none border border-slate-700"
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}
                 spellCheck={false}
+                autoFocus={true}
             ></textarea>
         </>
     );

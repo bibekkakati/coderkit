@@ -80,7 +80,7 @@ export default function Output({
                 </div>
             </div>
             <pre
-                className={`flex-1 textarea rounded h-full ${
+                className={`flex-1 textarea rounded h-full border border-slate-700 ${
                     wrapState ? "whitespace-pre-wrap" : ""
                 }`}
             >
