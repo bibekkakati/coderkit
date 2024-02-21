@@ -10,7 +10,7 @@ function createAppPages() {
 
     // 2. Create a 404.html page from index.html DOM
     document.title = "404 - Page not found";
-    fs.writeFileSync("./404.html", dom.serialize().replaceAll("\n\n", ""));
+    fs.writeFileSync("./dist/404.html", dom.serialize().replaceAll("\n\n", ""));
 
     // 3. Read keywords to use for SEO
     const keywords = fs
@@ -27,10 +27,13 @@ function createAppPages() {
     injectSeoTags(document, Kits);
 
     // 6. Replace index.html with the DOM (having SEO content)
-    fs.writeFileSync("./index.html", dom.serialize().replaceAll("\n\n", ""));
+    fs.writeFileSync(
+        "./dist/index.html",
+        dom.serialize().replaceAll("\n\n", "")
+    );
 
     // 7. Create a directory "app" same as the routing
-    const dir = "./app";
+    const dir = "./dist/app";
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }
