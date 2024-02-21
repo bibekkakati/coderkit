@@ -2,28 +2,40 @@ import fs from "fs";
 import jsdom from "jsdom";
 import Kits from "../src/constants/kitslist.json" assert { type: "json" };
 
-function processMetaTags() {
+function createAppPages() {
+    // 1. Read index.html page and make a DOM
     const html = fs.readFileSync("./index.html").toString();
     const dom = new jsdom.JSDOM(html, { contentType: "text/html" });
     const document = dom.window.document;
 
+    // 2. Create a 404.html page from index.html DOM
+    document.title = "404 - Page not found";
+    fs.writeFileSync("./404.html", dom.serialize().replaceAll("\n\n", ""));
+
+    // 3. Read keywords to use for SEO
     const keywords = fs
         .readFileSync("./scripts/keywords.txt")
         .toString()
         .split("\n");
+    // 4. Set keywords in cloned index.html DOM
     document
         .querySelector('meta[name="keywords"]')
         .setAttribute("content", keywords.join(","));
 
-    // Inject SEO tags in index.html
+    // 5. Inject SEO tags in cloned index.html DOM
+    document.title = "CoderKit - Streamlining Development with Essential Tools";
     injectSeoTags(document, Kits);
+
+    // 6. Replace index.html with the DOM (having SEO content)
     fs.writeFileSync("./index.html", dom.serialize().replaceAll("\n\n", ""));
 
+    // 7. Create a directory "app" same as the routing
     const dir = "./app";
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }
 
+    // 8. For each kit use the index.html cloned DOM, inject SEO and create the file wit kit name
     for (let i = 0; i < Kits.length; i++) {
         const { label, short_desc, meta_desc, link } = Kits[i];
         document.title = `${label} - ${short_desc}`;
@@ -96,5 +108,5 @@ function injectSeoTags(document, links) {
 }
 
 (function () {
-    processMetaTags();
+    createAppPages();
 })();
