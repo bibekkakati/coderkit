@@ -1,39 +1,39 @@
 {
-  "_AppPage-3fcabb36.js": {
+  "_AppPage-368413d5.js": {
     "dynamicImports": [
       "src/components/KitView.jsx",
       "src/components/Sidebar.jsx",
       "src/pages/ErrorPage.jsx"
     ],
-    "file": "assets/AppPage-3fcabb36.js",
+    "file": "assets/AppPage-368413d5.js",
     "imports": [
-      "_main-ba24dd89.js",
+      "index.html",
       "_vendor-32aafa36.js",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js"
     ],
     "isDynamicEntry": true
   },
-  "_CheckBox-9c59efdb.js": {
-    "file": "assets/CheckBox-9c59efdb.js",
+  "_CheckBox-88a4334f.js": {
+    "file": "assets/CheckBox-88a4334f.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_AppPage-3fcabb36.js"
+      "_AppPage-368413d5.js"
     ]
   },
-  "_Output-8808804b.js": {
-    "file": "assets/Output-8808804b.js",
+  "_Output-9b00e251.js": {
+    "file": "assets/Output-9b00e251.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_AppPage-3fcabb36.js",
+      "_AppPage-368413d5.js",
       "src/assets/CopyIcon.jsx"
     ]
   },
-  "_TextBox-b7419e2b.js": {
-    "file": "assets/TextBox-b7419e2b.js",
+  "_TextBox-a0be71c7.js": {
+    "file": "assets/TextBox-a0be71c7.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_AppPage-3fcabb36.js"
+      "_AppPage-368413d5.js"
     ]
   },
   "_beautifyHtml-12ba7827.js": {
@@ -57,23 +57,6 @@
   "_kitslist-40de4f67.js": {
     "file": "assets/kitslist-40de4f67.js"
   },
-  "_main-ba24dd89.js": {
-    "css": [
-      "assets/main-081cc633.css"
-    ],
-    "dynamicImports": [
-      "src/pages/HomePage.jsx",
-      "_AppPage-3fcabb36.js",
-      "src/pages/FeedbackPage.jsx",
-      "src/pages/ErrorPage.jsx",
-      "src/pages/TermsOfServicePage.jsx",
-      "src/pages/PrivacyPolicyPage.jsx"
-    ],
-    "file": "assets/main-ba24dd89.js",
-    "imports": [
-      "_vendor-32aafa36.js"
-    ]
-  },
   "_minifyCss-615d637b.js": {
     "file": "assets/minifyCss-615d637b.js"
   },
@@ -92,9 +75,28 @@
   "_vendor-32aafa36.js": {
     "file": "assets/vendor-32aafa36.js"
   },
-  "main.css": {
-    "file": "assets/main-081cc633.css",
-    "src": "main.css"
+  "index.css": {
+    "file": "assets/index-081cc633.css",
+    "src": "index.css"
+  },
+  "index.html": {
+    "css": [
+      "assets/index-081cc633.css"
+    ],
+    "dynamicImports": [
+      "src/pages/HomePage.jsx",
+      "_AppPage-368413d5.js",
+      "src/pages/FeedbackPage.jsx",
+      "src/pages/ErrorPage.jsx",
+      "src/pages/TermsOfServicePage.jsx",
+      "src/pages/PrivacyPolicyPage.jsx"
+    ],
+    "file": "assets/main-24227a85.js",
+    "imports": [
+      "_vendor-32aafa36.js"
+    ],
+    "isEntry": true,
+    "src": "index.html"
   },
   "src/assets/BeautifyIcon.jsx": {
     "file": "assets/BeautifyIcon-8fd1fe5f.js",
@@ -210,12 +212,12 @@
       "src/components/kits/XmlMinifier.jsx",
       "src/components/kits/XmlToJson.jsx"
     ],
-    "file": "assets/KitView-a2649126.js",
+    "file": "assets/KitView-dc4cd8fe.js",
     "imports": [
-      "_main-ba24dd89.js",
+      "index.html",
       "_dynamic-import-helper-5f2de6aa.js",
       "_vendor-32aafa36.js",
-      "_AppPage-3fcabb36.js",
+      "_AppPage-368413d5.js",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js"
     ],
@@ -237,12 +239,12 @@
       "src/assets/TransformIcon.jsx",
       "src/assets/XMLIcon.jsx"
     ],
-    "file": "assets/Sidebar-003ab067.js",
+    "file": "assets/Sidebar-8230020b.js",
     "imports": [
-      "_main-ba24dd89.js",
+      "index.html",
       "_dynamic-import-helper-5f2de6aa.js",
       "_vendor-32aafa36.js",
-      "_AppPage-3fcabb36.js",
+      "_AppPage-368413d5.js",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js"
     ],
@@ -250,14 +252,14 @@
     "src": "src/components/Sidebar.jsx"
   },
   "src/components/kits/Base64Transformer.jsx": {
-    "file": "assets/Base64Transformer-8d8a2280.js",
+    "file": "assets/Base64Transformer-ad6b6adb.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_TextBox-b7419e2b.js",
-      "_Output-8808804b.js",
-      "_AppPage-3fcabb36.js",
+      "_TextBox-a0be71c7.js",
+      "_Output-9b00e251.js",
+      "_AppPage-368413d5.js",
       "src/assets/CopyIcon.jsx",
-      "_main-ba24dd89.js",
+      "index.html",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js"
     ],
@@ -265,15 +267,15 @@
     "src": "src/components/kits/Base64Transformer.jsx"
   },
   "src/components/kits/CssBeautifier.jsx": {
-    "file": "assets/CssBeautifier-180f9445.js",
+    "file": "assets/CssBeautifier-9864a43b.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_TextBox-b7419e2b.js",
+      "_TextBox-a0be71c7.js",
       "_index-4edcfcc9.js",
-      "_Output-8808804b.js",
-      "_AppPage-3fcabb36.js",
+      "_Output-9b00e251.js",
+      "_AppPage-368413d5.js",
       "src/assets/CopyIcon.jsx",
-      "_main-ba24dd89.js",
+      "index.html",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js"
     ],
@@ -281,14 +283,14 @@
     "src": "src/components/kits/CssBeautifier.jsx"
   },
   "src/components/kits/CssMinifier.jsx": {
-    "file": "assets/CssMinifier-e59d365c.js",
+    "file": "assets/CssMinifier-2834c03a.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_TextBox-b7419e2b.js",
+      "_TextBox-a0be71c7.js",
       "_minifyCss-615d637b.js",
-      "_Output-8808804b.js",
-      "_AppPage-3fcabb36.js",
-      "_main-ba24dd89.js",
+      "_Output-9b00e251.js",
+      "_AppPage-368413d5.js",
+      "index.html",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js",
       "src/assets/CopyIcon.jsx"
@@ -297,16 +299,16 @@
     "src": "src/components/kits/CssMinifier.jsx"
   },
   "src/components/kits/HtmlBeautifier.jsx": {
-    "file": "assets/HtmlBeautifier-5b9b003a.js",
+    "file": "assets/HtmlBeautifier-01791c4c.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_TextBox-b7419e2b.js",
+      "_TextBox-a0be71c7.js",
       "_beautifyHtml-12ba7827.js",
-      "_Output-8808804b.js",
-      "_AppPage-3fcabb36.js",
+      "_Output-9b00e251.js",
+      "_AppPage-368413d5.js",
       "_index-4edcfcc9.js",
       "src/assets/CopyIcon.jsx",
-      "_main-ba24dd89.js",
+      "index.html",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js"
     ],
@@ -314,14 +316,14 @@
     "src": "src/components/kits/HtmlBeautifier.jsx"
   },
   "src/components/kits/HtmlMinifier.jsx": {
-    "file": "assets/HtmlMinifier-3b87c992.js",
+    "file": "assets/HtmlMinifier-ae976781.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_TextBox-b7419e2b.js",
+      "_TextBox-a0be71c7.js",
       "_minifyHtml-a2eb1e00.js",
-      "_Output-8808804b.js",
-      "_AppPage-3fcabb36.js",
-      "_main-ba24dd89.js",
+      "_Output-9b00e251.js",
+      "_AppPage-368413d5.js",
+      "index.html",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js",
       "_minifyCss-615d637b.js",
@@ -331,14 +333,14 @@
     "src": "src/components/kits/HtmlMinifier.jsx"
   },
   "src/components/kits/JSONFormatter.jsx": {
-    "file": "assets/JSONFormatter-31c7edd4.js",
+    "file": "assets/JSONFormatter-65ad947e.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_TextBox-b7419e2b.js",
-      "_Output-8808804b.js",
-      "_AppPage-3fcabb36.js",
+      "_TextBox-a0be71c7.js",
+      "_Output-9b00e251.js",
+      "_AppPage-368413d5.js",
       "src/assets/CopyIcon.jsx",
-      "_main-ba24dd89.js",
+      "index.html",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js"
     ],
@@ -346,15 +348,15 @@
     "src": "src/components/kits/JSONFormatter.jsx"
   },
   "src/components/kits/JavascriptBeautifier.jsx": {
-    "file": "assets/JavascriptBeautifier-5aa11cc9.js",
+    "file": "assets/JavascriptBeautifier-104f14be.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_TextBox-b7419e2b.js",
+      "_TextBox-a0be71c7.js",
       "_index-4edcfcc9.js",
-      "_Output-8808804b.js",
-      "_AppPage-3fcabb36.js",
+      "_Output-9b00e251.js",
+      "_AppPage-368413d5.js",
       "src/assets/CopyIcon.jsx",
-      "_main-ba24dd89.js",
+      "index.html",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js"
     ],
@@ -362,14 +364,14 @@
     "src": "src/components/kits/JavascriptBeautifier.jsx"
   },
   "src/components/kits/JavascriptMinifier.jsx": {
-    "file": "assets/JavascriptMinifier-075ea0cc.js",
+    "file": "assets/JavascriptMinifier-c50e55e2.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_TextBox-b7419e2b.js",
-      "_CheckBox-9c59efdb.js",
-      "_Output-8808804b.js",
-      "_AppPage-3fcabb36.js",
-      "_main-ba24dd89.js",
+      "_TextBox-a0be71c7.js",
+      "_CheckBox-88a4334f.js",
+      "_Output-9b00e251.js",
+      "_AppPage-368413d5.js",
+      "index.html",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js",
       "src/assets/CopyIcon.jsx"
@@ -378,15 +380,15 @@
     "src": "src/components/kits/JavascriptMinifier.jsx"
   },
   "src/components/kits/JsonToXml.jsx": {
-    "file": "assets/JsonToXml-0cf73099.js",
+    "file": "assets/JsonToXml-a0c9c272.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_TextBox-b7419e2b.js",
+      "_TextBox-a0be71c7.js",
       "_fxp-fe672c60.js",
-      "_Output-8808804b.js",
-      "_AppPage-3fcabb36.js",
+      "_Output-9b00e251.js",
+      "_AppPage-368413d5.js",
       "src/assets/CopyIcon.jsx",
-      "_main-ba24dd89.js",
+      "index.html",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js"
     ],
@@ -394,13 +396,13 @@
     "src": "src/components/kits/JsonToXml.jsx"
   },
   "src/components/kits/JwtDecoder.jsx": {
-    "file": "assets/JwtDecoder-45ea77c0.js",
+    "file": "assets/JwtDecoder-66d69e7d.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_TextBox-b7419e2b.js",
-      "_Output-8808804b.js",
-      "_AppPage-3fcabb36.js",
-      "_main-ba24dd89.js",
+      "_TextBox-a0be71c7.js",
+      "_Output-9b00e251.js",
+      "_AppPage-368413d5.js",
+      "index.html",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js",
       "src/assets/CopyIcon.jsx"
@@ -409,12 +411,12 @@
     "src": "src/components/kits/JwtDecoder.jsx"
   },
   "src/components/kits/LoremIpsumGenerator.jsx": {
-    "file": "assets/LoremIpsumGenerator-95562019.js",
+    "file": "assets/LoremIpsumGenerator-2be0e3c3.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_Output-8808804b.js",
-      "_AppPage-3fcabb36.js",
-      "_main-ba24dd89.js",
+      "_Output-9b00e251.js",
+      "_AppPage-368413d5.js",
+      "index.html",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js",
       "src/assets/CopyIcon.jsx"
@@ -423,14 +425,14 @@
     "src": "src/components/kits/LoremIpsumGenerator.jsx"
   },
   "src/components/kits/TextCaseConverter.jsx": {
-    "file": "assets/TextCaseConverter-8d1ed1d5.js",
+    "file": "assets/TextCaseConverter-5cf3799a.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_TextBox-b7419e2b.js",
-      "_Output-8808804b.js",
-      "_AppPage-3fcabb36.js",
+      "_TextBox-a0be71c7.js",
+      "_Output-9b00e251.js",
+      "_AppPage-368413d5.js",
       "src/assets/CopyIcon.jsx",
-      "_main-ba24dd89.js",
+      "index.html",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js"
     ],
@@ -438,16 +440,16 @@
     "src": "src/components/kits/TextCaseConverter.jsx"
   },
   "src/components/kits/XmlBeautifier.jsx": {
-    "file": "assets/XmlBeautifier-552232af.js",
+    "file": "assets/XmlBeautifier-64e71a60.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_TextBox-b7419e2b.js",
+      "_TextBox-a0be71c7.js",
       "_beautifyHtml-12ba7827.js",
-      "_Output-8808804b.js",
-      "_AppPage-3fcabb36.js",
+      "_Output-9b00e251.js",
+      "_AppPage-368413d5.js",
       "_index-4edcfcc9.js",
       "src/assets/CopyIcon.jsx",
-      "_main-ba24dd89.js",
+      "index.html",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js"
     ],
@@ -455,14 +457,14 @@
     "src": "src/components/kits/XmlBeautifier.jsx"
   },
   "src/components/kits/XmlMinifier.jsx": {
-    "file": "assets/XmlMinifier-1be5a545.js",
+    "file": "assets/XmlMinifier-e667e459.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_TextBox-b7419e2b.js",
+      "_TextBox-a0be71c7.js",
       "_minifyHtml-a2eb1e00.js",
-      "_Output-8808804b.js",
-      "_AppPage-3fcabb36.js",
-      "_main-ba24dd89.js",
+      "_Output-9b00e251.js",
+      "_AppPage-368413d5.js",
+      "index.html",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js",
       "_minifyCss-615d637b.js",
@@ -472,16 +474,16 @@
     "src": "src/components/kits/XmlMinifier.jsx"
   },
   "src/components/kits/XmlToJson.jsx": {
-    "file": "assets/XmlToJson-2d434de5.js",
+    "file": "assets/XmlToJson-615a41e7.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_TextBox-b7419e2b.js",
+      "_TextBox-a0be71c7.js",
       "_fxp-fe672c60.js",
-      "_CheckBox-9c59efdb.js",
-      "_Output-8808804b.js",
-      "_AppPage-3fcabb36.js",
+      "_CheckBox-88a4334f.js",
+      "_Output-9b00e251.js",
+      "_AppPage-368413d5.js",
       "src/assets/CopyIcon.jsx",
-      "_main-ba24dd89.js",
+      "index.html",
       "_kitslist-40de4f67.js",
       "_useDocumentTitle-024d39fa.js"
     ],
@@ -498,10 +500,10 @@
     "src": "src/pages/ErrorPage.jsx"
   },
   "src/pages/FeedbackPage.jsx": {
-    "file": "assets/FeedbackPage-2640f4bb.js",
+    "file": "assets/FeedbackPage-09b23a5f.js",
     "imports": [
       "_vendor-32aafa36.js",
-      "_main-ba24dd89.js",
+      "index.html",
       "_useDocumentTitle-024d39fa.js"
     ],
     "isDynamicEntry": true,
