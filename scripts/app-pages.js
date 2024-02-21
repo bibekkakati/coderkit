@@ -4,7 +4,7 @@ import Kits from "../src/constants/kitslist.json" assert { type: "json" };
 
 function createAppPages() {
     // 1. Read index.html page and make a DOM
-    const html = fs.readFileSync("./index.html").toString();
+    const html = fs.readFileSync("./dist/index.html").toString();
     const dom = new jsdom.JSDOM(html, { contentType: "text/html" });
     const document = dom.window.document;
 
