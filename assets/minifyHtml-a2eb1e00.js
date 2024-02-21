@@ -1,0 +1,1 @@
+import{m as e}from"./minifyCss-615d637b.js";function r(r){return r=(r=(r=(r=(r=(r=r.replace(/<style[^>]*>([\s\S]*?)<\/style>/g,(function(r,s){return"<style>"+e(s)+"</style>"}))).replace(/<!--([\s\S]*?)-->/g,"")).replace(/\n/g,"")).replace(/\r/g,"")).replace(/\t/g,"")).replace(/\s+/g," ")}export{r as m};

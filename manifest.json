@@ -1,0 +1,538 @@
+{
+  "_AppPage-3fcabb36.js": {
+    "dynamicImports": [
+      "src/components/KitView.jsx",
+      "src/components/Sidebar.jsx",
+      "src/pages/ErrorPage.jsx"
+    ],
+    "file": "assets/AppPage-3fcabb36.js",
+    "imports": [
+      "_main-ba24dd89.js",
+      "_vendor-32aafa36.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js"
+    ],
+    "isDynamicEntry": true
+  },
+  "_CheckBox-9c59efdb.js": {
+    "file": "assets/CheckBox-9c59efdb.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_AppPage-3fcabb36.js"
+    ]
+  },
+  "_Output-8808804b.js": {
+    "file": "assets/Output-8808804b.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_AppPage-3fcabb36.js",
+      "src/assets/CopyIcon.jsx"
+    ]
+  },
+  "_TextBox-b7419e2b.js": {
+    "file": "assets/TextBox-b7419e2b.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_AppPage-3fcabb36.js"
+    ]
+  },
+  "_beautifyHtml-12ba7827.js": {
+    "file": "assets/beautifyHtml-12ba7827.js",
+    "imports": [
+      "_index-4edcfcc9.js"
+    ]
+  },
+  "_dynamic-import-helper-5f2de6aa.js": {
+    "file": "assets/dynamic-import-helper-5f2de6aa.js"
+  },
+  "_fxp-fe672c60.js": {
+    "file": "assets/fxp-fe672c60.js"
+  },
+  "_index-4edcfcc9.js": {
+    "file": "assets/index-4edcfcc9.js",
+    "imports": [
+      "_vendor-32aafa36.js"
+    ]
+  },
+  "_kitslist-40de4f67.js": {
+    "file": "assets/kitslist-40de4f67.js"
+  },
+  "_main-ba24dd89.js": {
+    "css": [
+      "assets/main-081cc633.css"
+    ],
+    "dynamicImports": [
+      "src/pages/HomePage.jsx",
+      "_AppPage-3fcabb36.js",
+      "src/pages/FeedbackPage.jsx",
+      "src/pages/ErrorPage.jsx",
+      "src/pages/TermsOfServicePage.jsx",
+      "src/pages/PrivacyPolicyPage.jsx"
+    ],
+    "file": "assets/main-ba24dd89.js",
+    "imports": [
+      "_vendor-32aafa36.js"
+    ]
+  },
+  "_minifyCss-615d637b.js": {
+    "file": "assets/minifyCss-615d637b.js"
+  },
+  "_minifyHtml-a2eb1e00.js": {
+    "file": "assets/minifyHtml-a2eb1e00.js",
+    "imports": [
+      "_minifyCss-615d637b.js"
+    ]
+  },
+  "_useDocumentTitle-024d39fa.js": {
+    "file": "assets/useDocumentTitle-024d39fa.js",
+    "imports": [
+      "_vendor-32aafa36.js"
+    ]
+  },
+  "_vendor-32aafa36.js": {
+    "file": "assets/vendor-32aafa36.js"
+  },
+  "main.css": {
+    "file": "assets/main-081cc633.css",
+    "src": "main.css"
+  },
+  "src/assets/BeautifyIcon.jsx": {
+    "file": "assets/BeautifyIcon-8fd1fe5f.js",
+    "imports": [
+      "_vendor-32aafa36.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/assets/BeautifyIcon.jsx"
+  },
+  "src/assets/CSSIcon.jsx": {
+    "file": "assets/CSSIcon-2e96c17a.js",
+    "imports": [
+      "_vendor-32aafa36.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/assets/CSSIcon.jsx"
+  },
+  "src/assets/ConvertIcon.jsx": {
+    "file": "assets/ConvertIcon-ba37dfc7.js",
+    "imports": [
+      "_vendor-32aafa36.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/assets/ConvertIcon.jsx"
+  },
+  "src/assets/CopyIcon.jsx": {
+    "file": "assets/CopyIcon-f1aba91b.js",
+    "imports": [
+      "_vendor-32aafa36.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/assets/CopyIcon.jsx"
+  },
+  "src/assets/HTMLIcon.jsx": {
+    "file": "assets/HTMLIcon-7fb116da.js",
+    "imports": [
+      "_vendor-32aafa36.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/assets/HTMLIcon.jsx"
+  },
+  "src/assets/JsonIcon.jsx": {
+    "file": "assets/JsonIcon-509be29c.js",
+    "imports": [
+      "_vendor-32aafa36.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/assets/JsonIcon.jsx"
+  },
+  "src/assets/JwtIcon.jsx": {
+    "file": "assets/JwtIcon-c2553716.js",
+    "imports": [
+      "_vendor-32aafa36.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/assets/JwtIcon.jsx"
+  },
+  "src/assets/LoremIcon.jsx": {
+    "file": "assets/LoremIcon-04a1439f.js",
+    "imports": [
+      "_vendor-32aafa36.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/assets/LoremIcon.jsx"
+  },
+  "src/assets/MinifyIcon.jsx": {
+    "file": "assets/MinifyIcon-760c69c8.js",
+    "imports": [
+      "_vendor-32aafa36.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/assets/MinifyIcon.jsx"
+  },
+  "src/assets/TextCaseIcon.jsx": {
+    "file": "assets/TextCaseIcon-199e6379.js",
+    "imports": [
+      "_vendor-32aafa36.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/assets/TextCaseIcon.jsx"
+  },
+  "src/assets/TransformIcon.jsx": {
+    "file": "assets/TransformIcon-09ead8e0.js",
+    "imports": [
+      "_vendor-32aafa36.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/assets/TransformIcon.jsx"
+  },
+  "src/assets/XMLIcon.jsx": {
+    "file": "assets/XMLIcon-032329a5.js",
+    "imports": [
+      "_vendor-32aafa36.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/assets/XMLIcon.jsx"
+  },
+  "src/components/KitView.jsx": {
+    "dynamicImports": [
+      "src/components/kits/Base64Transformer.jsx",
+      "src/components/kits/CssBeautifier.jsx",
+      "src/components/kits/CssMinifier.jsx",
+      "src/components/kits/HtmlBeautifier.jsx",
+      "src/components/kits/HtmlMinifier.jsx",
+      "src/components/kits/JSONFormatter.jsx",
+      "src/components/kits/JavascriptBeautifier.jsx",
+      "src/components/kits/JavascriptMinifier.jsx",
+      "src/components/kits/JsonToXml.jsx",
+      "src/components/kits/JwtDecoder.jsx",
+      "src/components/kits/LoremIpsumGenerator.jsx",
+      "src/components/kits/TextCaseConverter.jsx",
+      "src/components/kits/XmlBeautifier.jsx",
+      "src/components/kits/XmlMinifier.jsx",
+      "src/components/kits/XmlToJson.jsx"
+    ],
+    "file": "assets/KitView-a2649126.js",
+    "imports": [
+      "_main-ba24dd89.js",
+      "_dynamic-import-helper-5f2de6aa.js",
+      "_vendor-32aafa36.js",
+      "_AppPage-3fcabb36.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/KitView.jsx"
+  },
+  "src/components/Sidebar.jsx": {
+    "dynamicImports": [
+      "src/assets/BeautifyIcon.jsx",
+      "src/assets/CSSIcon.jsx",
+      "src/assets/ConvertIcon.jsx",
+      "src/assets/CopyIcon.jsx",
+      "src/assets/HTMLIcon.jsx",
+      "src/assets/JsonIcon.jsx",
+      "src/assets/JwtIcon.jsx",
+      "src/assets/LoremIcon.jsx",
+      "src/assets/MinifyIcon.jsx",
+      "src/assets/TextCaseIcon.jsx",
+      "src/assets/TransformIcon.jsx",
+      "src/assets/XMLIcon.jsx"
+    ],
+    "file": "assets/Sidebar-003ab067.js",
+    "imports": [
+      "_main-ba24dd89.js",
+      "_dynamic-import-helper-5f2de6aa.js",
+      "_vendor-32aafa36.js",
+      "_AppPage-3fcabb36.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/Sidebar.jsx"
+  },
+  "src/components/kits/Base64Transformer.jsx": {
+    "file": "assets/Base64Transformer-8d8a2280.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_TextBox-b7419e2b.js",
+      "_Output-8808804b.js",
+      "_AppPage-3fcabb36.js",
+      "src/assets/CopyIcon.jsx",
+      "_main-ba24dd89.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/kits/Base64Transformer.jsx"
+  },
+  "src/components/kits/CssBeautifier.jsx": {
+    "file": "assets/CssBeautifier-180f9445.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_TextBox-b7419e2b.js",
+      "_index-4edcfcc9.js",
+      "_Output-8808804b.js",
+      "_AppPage-3fcabb36.js",
+      "src/assets/CopyIcon.jsx",
+      "_main-ba24dd89.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/kits/CssBeautifier.jsx"
+  },
+  "src/components/kits/CssMinifier.jsx": {
+    "file": "assets/CssMinifier-e59d365c.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_TextBox-b7419e2b.js",
+      "_minifyCss-615d637b.js",
+      "_Output-8808804b.js",
+      "_AppPage-3fcabb36.js",
+      "_main-ba24dd89.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js",
+      "src/assets/CopyIcon.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/kits/CssMinifier.jsx"
+  },
+  "src/components/kits/HtmlBeautifier.jsx": {
+    "file": "assets/HtmlBeautifier-5b9b003a.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_TextBox-b7419e2b.js",
+      "_beautifyHtml-12ba7827.js",
+      "_Output-8808804b.js",
+      "_AppPage-3fcabb36.js",
+      "_index-4edcfcc9.js",
+      "src/assets/CopyIcon.jsx",
+      "_main-ba24dd89.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/kits/HtmlBeautifier.jsx"
+  },
+  "src/components/kits/HtmlMinifier.jsx": {
+    "file": "assets/HtmlMinifier-3b87c992.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_TextBox-b7419e2b.js",
+      "_minifyHtml-a2eb1e00.js",
+      "_Output-8808804b.js",
+      "_AppPage-3fcabb36.js",
+      "_main-ba24dd89.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js",
+      "_minifyCss-615d637b.js",
+      "src/assets/CopyIcon.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/kits/HtmlMinifier.jsx"
+  },
+  "src/components/kits/JSONFormatter.jsx": {
+    "file": "assets/JSONFormatter-31c7edd4.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_TextBox-b7419e2b.js",
+      "_Output-8808804b.js",
+      "_AppPage-3fcabb36.js",
+      "src/assets/CopyIcon.jsx",
+      "_main-ba24dd89.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/kits/JSONFormatter.jsx"
+  },
+  "src/components/kits/JavascriptBeautifier.jsx": {
+    "file": "assets/JavascriptBeautifier-5aa11cc9.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_TextBox-b7419e2b.js",
+      "_index-4edcfcc9.js",
+      "_Output-8808804b.js",
+      "_AppPage-3fcabb36.js",
+      "src/assets/CopyIcon.jsx",
+      "_main-ba24dd89.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/kits/JavascriptBeautifier.jsx"
+  },
+  "src/components/kits/JavascriptMinifier.jsx": {
+    "file": "assets/JavascriptMinifier-075ea0cc.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_TextBox-b7419e2b.js",
+      "_CheckBox-9c59efdb.js",
+      "_Output-8808804b.js",
+      "_AppPage-3fcabb36.js",
+      "_main-ba24dd89.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js",
+      "src/assets/CopyIcon.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/kits/JavascriptMinifier.jsx"
+  },
+  "src/components/kits/JsonToXml.jsx": {
+    "file": "assets/JsonToXml-0cf73099.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_TextBox-b7419e2b.js",
+      "_fxp-fe672c60.js",
+      "_Output-8808804b.js",
+      "_AppPage-3fcabb36.js",
+      "src/assets/CopyIcon.jsx",
+      "_main-ba24dd89.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/kits/JsonToXml.jsx"
+  },
+  "src/components/kits/JwtDecoder.jsx": {
+    "file": "assets/JwtDecoder-45ea77c0.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_TextBox-b7419e2b.js",
+      "_Output-8808804b.js",
+      "_AppPage-3fcabb36.js",
+      "_main-ba24dd89.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js",
+      "src/assets/CopyIcon.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/kits/JwtDecoder.jsx"
+  },
+  "src/components/kits/LoremIpsumGenerator.jsx": {
+    "file": "assets/LoremIpsumGenerator-95562019.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_Output-8808804b.js",
+      "_AppPage-3fcabb36.js",
+      "_main-ba24dd89.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js",
+      "src/assets/CopyIcon.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/kits/LoremIpsumGenerator.jsx"
+  },
+  "src/components/kits/TextCaseConverter.jsx": {
+    "file": "assets/TextCaseConverter-8d1ed1d5.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_TextBox-b7419e2b.js",
+      "_Output-8808804b.js",
+      "_AppPage-3fcabb36.js",
+      "src/assets/CopyIcon.jsx",
+      "_main-ba24dd89.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/kits/TextCaseConverter.jsx"
+  },
+  "src/components/kits/XmlBeautifier.jsx": {
+    "file": "assets/XmlBeautifier-552232af.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_TextBox-b7419e2b.js",
+      "_beautifyHtml-12ba7827.js",
+      "_Output-8808804b.js",
+      "_AppPage-3fcabb36.js",
+      "_index-4edcfcc9.js",
+      "src/assets/CopyIcon.jsx",
+      "_main-ba24dd89.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/kits/XmlBeautifier.jsx"
+  },
+  "src/components/kits/XmlMinifier.jsx": {
+    "file": "assets/XmlMinifier-1be5a545.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_TextBox-b7419e2b.js",
+      "_minifyHtml-a2eb1e00.js",
+      "_Output-8808804b.js",
+      "_AppPage-3fcabb36.js",
+      "_main-ba24dd89.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js",
+      "_minifyCss-615d637b.js",
+      "src/assets/CopyIcon.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/kits/XmlMinifier.jsx"
+  },
+  "src/components/kits/XmlToJson.jsx": {
+    "file": "assets/XmlToJson-2d434de5.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_TextBox-b7419e2b.js",
+      "_fxp-fe672c60.js",
+      "_CheckBox-9c59efdb.js",
+      "_Output-8808804b.js",
+      "_AppPage-3fcabb36.js",
+      "src/assets/CopyIcon.jsx",
+      "_main-ba24dd89.js",
+      "_kitslist-40de4f67.js",
+      "_useDocumentTitle-024d39fa.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/kits/XmlToJson.jsx"
+  },
+  "src/pages/ErrorPage.jsx": {
+    "file": "assets/ErrorPage-d228c290.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_useDocumentTitle-024d39fa.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/ErrorPage.jsx"
+  },
+  "src/pages/FeedbackPage.jsx": {
+    "file": "assets/FeedbackPage-2640f4bb.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_main-ba24dd89.js",
+      "_useDocumentTitle-024d39fa.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/FeedbackPage.jsx"
+  },
+  "src/pages/HomePage.jsx": {
+    "file": "assets/HomePage-34ebcf1c.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_useDocumentTitle-024d39fa.js",
+      "_kitslist-40de4f67.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/HomePage.jsx"
+  },
+  "src/pages/PrivacyPolicyPage.jsx": {
+    "file": "assets/PrivacyPolicyPage-7516b962.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_useDocumentTitle-024d39fa.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/PrivacyPolicyPage.jsx"
+  },
+  "src/pages/TermsOfServicePage.jsx": {
+    "file": "assets/TermsOfServicePage-427444bc.js",
+    "imports": [
+      "_vendor-32aafa36.js",
+      "_useDocumentTitle-024d39fa.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/TermsOfServicePage.jsx"
+  }
+}
