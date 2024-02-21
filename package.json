@@ -2,6 +2,7 @@
     "name": "coderkit",
     "private": true,
     "version": "0.1.0",
+    "homepage": "https://coderkit.dev",
     "type": "module",
     "scripts": {
         "dev": "npm run app-pages && vite",
@@ -10,7 +11,9 @@
         "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
         "sitemap": "node scripts/sitemap.js",
-        "app-pages": "node scripts/app-pages.js"
+        "app-pages": "node scripts/app-pages.js",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist"
     },
     "dependencies": {
         "fast-xml-parser": "^4.3.2",
@@ -32,6 +35,7 @@
         "eslint-plugin-react": "^7.32.2",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.3",
+        "gh-pages": "^6.1.1",
         "jsdom": "^22.1.0",
         "postcss": "^8.4.31",
         "rollup-plugin-visualizer": "^5.9.2",
